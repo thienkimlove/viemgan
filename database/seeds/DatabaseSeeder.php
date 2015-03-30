@@ -42,13 +42,16 @@ class PostTableSeeder extends Seeder {
             'name' => 'Sản phẩm tốt cho gan'
         ]);
         Category::create([
-            'name' => 'Viêm gan Virus'
+            'name' => 'Viêm gan Virus',
+            'parent_id'=>1
         ]);
         Category::create([
-            'name' => 'Bệnh gan 2'
+            'name' => 'Bệnh gan 2',
+            'parent_id'=>1
         ]);
         Category::create([
-            'name' => 'Bệnh gan 3'
+            'name' => 'Bệnh gan 3',
+            'parent_id'=>1
         ]);
         foreach ([2, 3, 4, 5, 6] as $category) {
             for ($i = 1; $i < 40; $i ++) {
