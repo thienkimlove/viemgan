@@ -1,5 +1,5 @@
 /node_modules
 .env
 .idea/
-/public/images/*
+/public/files/images/*
 /public/js/libs/kcfinder/upload/*
