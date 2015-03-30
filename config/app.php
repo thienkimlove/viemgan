@@ -203,7 +203,8 @@ return [
         'Flash'     => 'Laracasts\Flash\Flash',
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Form'      => 'Illuminate\Html\FormFacade',
-        'Image'     => 'Intervention\Image\Facades\Image'
+        'Image'     => 'Intervention\Image\Facades\Image',
+        'Uuid'      => 'Webpatser\Uuid\Uuid',
 
 	],
 
