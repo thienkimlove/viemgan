@@ -21,13 +21,13 @@
             </li>
             @endforeach
             <li>
-                <a href="{{url('chia-se')}}" title=""><span>Chia sẻ</span></a>
+                <a {{ (!empty($page) && $page == 'share') ? 'class="active"' : '' }} href="{{url('chia-se')}}" title=""><span>Chia sẻ</span></a>
             </li>
             <li>
-                <a href="{{url('hoi-dap')}}" title=""><span>Hỏi đáp</span></a>
+                <a {{ (!empty($page) && $page == 'faq') ? 'class="active"' : '' }} href="{{url('hoi-dap')}}" title=""><span>Hỏi đáp</span></a>
             </li>
             <li>
-                <a href="{{url('lien-he')}}" title=""><span>Liên hệ</span></a>
+                <a {{ (!empty($page) && $page == 'contact') ? 'class="active"' : '' }} href="{{url('lien-he')}}" title=""><span>Liên hệ</span></a>
             </li>
         </ul>
     </div>

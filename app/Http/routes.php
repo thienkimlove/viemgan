@@ -14,6 +14,8 @@
 use App\Post;
 
 Route::get('/', 'MainController@index');
+Route::get('/hoi-dap', 'MainController@faq');
+Route::get('/lien-he', 'MainController@contact');
 Route::get('admin', 'AdminController@index');
 Route::get('chuyen-muc/{tag}', 'MainController@categoryDetails');
 

@@ -27,7 +27,23 @@ class MainController extends Controller
     {
        $category = Category::where('slug', $slug)->first();
        $posts = Post::where('category_id', $category->id)->latest()->paginate(20);
-       return view('frontend.category_details', compact('category', 'posts'));
+        $latestPost = null;
+       if ($category->id == 4) {
+           $latestPost = Post::where('category_id', 4)->take(4)->get();
+       }
+       $view = ($category->id == 4) ? 'frontend.virus' : 'frontend.category_details';
+       return view($view, compact('category', 'posts', 'latestPost'));
+    }
+
+    public function faq()
+    {
+       $page = 'faq';
+       return view('frontend.faq', compact('page'));
+    }
+    public function contact()
+    {
+       $page = 'contact';
+       return view('frontend.contact', compact('page'));
     }
 
 }
