@@ -17,7 +17,7 @@ class Post extends Model {
     public function setTitleAttribute($title)
     {
         $this->attributes['title'] = $title;
-        $this->attributes['slug'] =  Str::limit( Str::slug($title), 32, '');
+        $this->attributes['slug'] =  Str::limit( Str::slug($title), 200, '');
     }
 
     /**
