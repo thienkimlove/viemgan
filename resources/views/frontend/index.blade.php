@@ -13,18 +13,18 @@
                 <a data-ng-href="<%goPost(rootCategoryTop)%>" title="" class="thumb-img">
                     <img data-ng-src="<%goPostImage(rootCategoryTop, '400_')%>" alt=""/>
                 </a>
-                <h3 data-ng-bind="rootCategoryTop.title"></h3>
+                <h3 data-ng-bind="rootCategoryTop.title | limitTo:50"></h3>
                 <p data-ng-bind="rootCategoryTop.desc"></p>
             </article>
             <div class="item-list">
                 <article class="block" data-ng-repeat="post in rootCategoryLatest" data-ng-click="changeLatest(post, $event)">
                     <a data-ng-href="<%goPost(post)%>" class="thumb"><img data-ng-src="<%goPostImage(post, '100_')%>" width="115" height="80" alt=""></a>
-                    <h3><a data-ng-href="<%goPost(post)%>" data-ng-bind="post.title"></a></h3>
+                    <h3><a data-ng-href="<%goPost(post)%>" data-ng-bind="post.title | limitTo:50"></a></h3>
                 </article>
             </div>
         </div>
         <div class="box-ad">
-            <a href="#"><img src="images/adv.jpg" alt=""></a>
+            <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
         </div>
         <div class="box-best-product cf">
             <h3 class="title">
@@ -34,7 +34,7 @@
                 @foreach ($top2 as $post)
                 <article class="item">
                     <a href="{{url($post->slug.'.html')}}" class="thumb-img"><img src="{{url('files/images/100_'.$post->image)}}" alt=""></a>
-                    <h3><a href="{{url($post->slug.'.html')}}">{{$post->title}}</a></h3>
+                    <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
                 </article>
                 @endforeach
             </div>
@@ -54,7 +54,7 @@
                             <img src="{{url('files/images/300_'.$post->image)}}" alt="">
                         </a>
                         <h3>
-                            <a href="{{url($post->slug.'.html')}}" class="thumb">{{$post->title}}</a>
+                            <a href="{{url($post->slug.'.html')}}" class="thumb">{{str_limit($post->title, 50)}}</a>
                         </h3>
                         <p>
                           {{str_limit($post->desc, 100)}}
@@ -65,7 +65,7 @@
                         <a href="{{url($post->slug.'.html')}}" class="thumb">
                             <img src="{{url('files/images/100_'.$post->image)}}" width="115" height="80" alt="">
                         </a>
-                        <h3><a href="{{url($post->slug.'.html')}}">{{$post->title}}</a></h3>
+                        <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
                         <div class="view fl">
                             <span class="i-view"></span>
                             <span class="view-c">45 lượt xem</span>

@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -26,13 +27,14 @@ class MainController extends Controller
     public function categoryDetails($slug)
     {
        $category = Category::where('slug', $slug)->first();
-       $posts = Post::where('category_id', $category->id)->latest()->paginate(20);
+       $page = $category->id;
+       $posts = Post::where('category_id', $category->id)->latest()->paginate(10);
         $latestPost = null;
        if ($category->id == 4) {
            $latestPost = Post::where('category_id', 4)->take(4)->get();
        }
        $view = ($category->id == 4) ? 'frontend.virus' : 'frontend.category_details';
-       return view($view, compact('category', 'posts', 'latestPost'));
+       return view($view, compact('category', 'posts', 'latestPost', 'page'));
     }
 
     public function faq()
@@ -44,6 +46,12 @@ class MainController extends Controller
     {
        $page = 'contact';
        return view('frontend.contact', compact('page'));
+    }
+    public function tag($keyword)
+    {
+        $tag = Tag::where('slug', $keyword)->first();
+        $posts = $tag->posts();
+        return view('frontend.search', compact('posts', 'keyword'));
     }
 
 }

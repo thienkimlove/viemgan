@@ -17,7 +17,7 @@
                                     <a href="{{url($post->slug . '.html')}}" class="thumb">{{str_limit($post->title, 25)}}</a>
                                 </h3>
                                 <p>
-                                    {{str_limit($post->desc, 115)}}
+                                    {{str_limit($post->desc,70)}}
                                 </p>
                             </div>
                         @else
@@ -55,7 +55,7 @@
                     <p>
                         <span class="des">Mô tả</span>
                   <span>
-                   {{$post->desc}}
+                   {{str_limit($post->desc, 70)}}
                   </span>
                     </p>
                 </div>

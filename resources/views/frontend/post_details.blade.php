@@ -21,7 +21,7 @@
                 </div>
                 <div class="clear"></div>
             </div>
-            {{$post->content}}
+            {!!$post->content!!}
         </article><!--//box-detail-->
         <div class="box-share">
             <div class="item">

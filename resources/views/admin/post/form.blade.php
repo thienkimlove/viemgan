@@ -27,6 +27,19 @@
      {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('tag_list', 'Tags') !!}
+    {!! Form::select('tag_list[]', $tags, null, ['id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
+</div>
+
  <div class="form-group">
         {!! Form::submit($submitText, ['class' => 'btn btn-primary form-control']) !!}
   </div>
+@section('footer')
+    <script>
+        $('#tag_list').select2({
+            placeholder : 'Choose a tag',
+            tags : true //allow to add new tag which not in list.
+        });
+    </script>
+@endsection

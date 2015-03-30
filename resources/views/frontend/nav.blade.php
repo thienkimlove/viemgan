@@ -2,13 +2,13 @@
     <div class="fix">
         <ul class="cf">
             <li>
-                <a {{ (!empty($page) && $page == 'index') ? 'class="active"' : '' }} href="{{url('/')}}" title="">
+                <a class="{{ (!empty($page) && $page == 'index') ?  'active' : '' }}" href="{{url('/')}}" title="">
                     <span>TRANG CHỦ</span>
                 </a>
             </li>
             @foreach ($categories as $cate)
             <li>
-                <a href="{{($cate->subCategories->count() == 0) ? url('chuyen-muc', $cate->slug) : ''}}" title=""><span>{{$cate->name}}</span></a>
+                <a class="{{(!empty($page) && ($page == $cate->id | in_array($page, $cate->subCategories->lists('id')))) ? 'active' : ''}}" href="{{($cate->subCategories->count() == 0) ? url('chuyen-muc', $cate->slug) : ''}}" title=""><span>{{$cate->name}}</span></a>
                 @if ($cate->subCategories->count() > 0)
                  <ul>
                     @foreach ($cate->subCategories as $sub)
@@ -21,13 +21,13 @@
             </li>
             @endforeach
             <li>
-                <a {{ (!empty($page) && $page == 'share') ? 'class="active"' : '' }} href="{{url('chia-se')}}" title=""><span>Chia sẻ</span></a>
+                <a class="{{ (!empty($page) && $page == 'share') ? 'active' : '' }}" href="{{url('chia-se')}}" title=""><span>Chia sẻ</span></a>
             </li>
             <li>
-                <a {{ (!empty($page) && $page == 'faq') ? 'class="active"' : '' }} href="{{url('hoi-dap')}}" title=""><span>Hỏi đáp</span></a>
+                <a class="{{ (!empty($page) && $page == 'faq') ? 'active' : '' }} " href="{{url('hoi-dap')}}" title=""><span>Hỏi đáp</span></a>
             </li>
             <li>
-                <a {{ (!empty($page) && $page == 'contact') ? 'class="active"' : '' }} href="{{url('lien-he')}}" title=""><span>Liên hệ</span></a>
+                <a class="{{ (!empty($page) && $page == 'contact') ? 'active' : '' }}" href="{{url('lien-he')}}" title=""><span>Liên hệ</span></a>
             </li>
         </ul>
     </div>

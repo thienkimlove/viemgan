@@ -18,20 +18,21 @@ class PostRepository extends BaseRepository
      */
     public function create()
     {
+        $tags = Tag::all()->lists('name', 'name');
         $categories = $this->getCategoriesList();
-        return compact('categories');
+        return compact('categories', 'tags');
     }
 
     public function store($request)
     {
-      $this->model->create([
+      $post = $this->model->create([
             'title' => $request->input('title'),
             'desc' => $request->input('desc'),
             'content' => $request->input('content'),
             'image' => ($request->file('image') && $request->file('image')->isValid())?  $this->saveImage($request) : '',
             'category_id' => $request->input('category_id')
         ]);
-
+       $this->syncTags($post, $request);
     }
 
 
@@ -42,9 +43,10 @@ class PostRepository extends BaseRepository
      */
     public function edit($id)
     {
+        $tags = Tag::all()->lists('name', 'name');
         $post = $this->getById($id);
         $categories = $this->getCategoriesList();
-        return compact('post', 'categories');
+        return compact('post', 'categories', 'tags');
     }
 
     public function update($request, $id)
@@ -61,13 +63,16 @@ class PostRepository extends BaseRepository
             $update['image'] = $this->saveImage($request, $post->image);
         }
         $post->update($update);
-       // $this->syncTags($post, $request->input('tag_list'));
-
+        $this->syncTags($post, $request);
     }
 
-    protected function syncTags(Post $post, array $tags)
+    protected function syncTags(Post $post, $request)
     {
-        $post->tags()->sync($tags);
+        $tagIds = [];
+        foreach ($request->input('tag_list') as $tag) {
+            $tagIds[] = Tag::firstOrCreate(['name' => $tag])->id;
+        }
+        $post->tags()->sync($tagIds);
     }
 
     /**

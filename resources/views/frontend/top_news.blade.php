@@ -13,10 +13,10 @@
         <div class="data">
             <div class="item" data-ng-repeat="post in latestPost" data-ng-click="changeLatest(post, $event)">
                 <a data-ng-href="<%goPost(post)%>" title="" class="thumb-img">
-                    <img src="<%goPostImage(post, '300_')%>" alt="<%post.title%>"/>
+                    <img data-ng-src="<%goPostImage(post, '300_')%>" alt="<%post.title%>"/>
                 </a>
                 <h3>
-                    <a data-ng-href="<%goPost(post)%>" title="<%post.title%>" data-ng-bind="post.title"></a>
+                    <a data-ng-href="<%goPost(post)%>" title="<%post.title%>" data-ng-bind="post.title|limitTo:30"></a>
                 </h3>
             </div>
             <div class="clear"></div>

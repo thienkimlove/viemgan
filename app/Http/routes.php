@@ -18,6 +18,7 @@ Route::get('/hoi-dap', 'MainController@faq');
 Route::get('/lien-he', 'MainController@contact');
 Route::get('admin', 'AdminController@index');
 Route::get('chuyen-muc/{tag}', 'MainController@categoryDetails');
+Route::get('tu-khoa/{tag}', 'MainController@tag');
 
 /*
  * for searching
@@ -34,6 +35,8 @@ Route::get('search/{tag}', function($tag) {
         return view('frontend.search', compact('posts', 'keyword'));
     }
 });
+
+
 
 Route::resource('admin/categories', 'CategoriesController');
 Route::resource('admin/posts', 'PostsController');
