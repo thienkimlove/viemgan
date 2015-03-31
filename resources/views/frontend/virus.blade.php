@@ -16,7 +16,7 @@
                                 <img src="{{url('files/images/400_'. $post->image)}}" alt="{{$post->title}}">
                             </a>
                             <h3>
-                                <a href="{{url($post->slug.'.html')}}" class="thumb">{{$post->title}}</a>
+                                <a href="{{url($post->slug.'.html')}}" class="thumb">{{str_limit($post->title, 50)}}</a>
                             </h3>
                         </div>
                     </div>
