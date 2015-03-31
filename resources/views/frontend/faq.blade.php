@@ -11,7 +11,7 @@
                 <div class="box-faq">
                     @foreach ($questions as $question)
                     <article class="item">
-                        <div class="number">1</div>
+                        <div class="number">{{$question->id}}</div>
                         <div class="content">
                             <h3 class="title-faq">{{$question->question}}</h3>
                             <time class="time" datetime="{{$question->updated_at}}">{{$question->updated_at}}</time>
