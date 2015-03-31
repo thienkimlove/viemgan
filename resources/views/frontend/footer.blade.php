@@ -24,22 +24,19 @@
                 <div class="head">Danh mục</div>
                 <ul class="nav-footer">
                     <li>
-                        <a href="" title="">Các bệnh về gan</a>
+                        <a href="{{url('chuyen-muc/viem-gan-virus')}}" title="">Các bệnh về gan</a>
                     </li>
                     <li>
-                        <a href="" title="">Dược liệu với bệnh gan</a>
+                        <a href="{{url('chuyen-muc/duoc-lieu-voi-benh-gan')}}" title="">Dược liệu với bệnh gan</a>
                     </li>
                     <li>
-                        <a href="" title="">Sản phẩm tốt cho gan</a>
+                        <a href="{{url('chuyen-muc/san-pham-tot-cho-gan')}}" title="">Sản phẩm tốt cho gan</a>
                     </li>
                     <li>
-                        <a href="" title="">Chia sẻ</a>
+                        <a href="{{url('hoi-dap')}}" title="">Hỏi đáp</a>
                     </li>
                     <li>
-                        <a href="" title="">Hỏi đáp</a>
-                    </li>
-                    <li>
-                        <a href="" title="">Liên hệ</a>
+                        <a href="{{url('lien-he')}}" title="">Liên hệ</a>
                     </li>
                 </ul>
             </div>

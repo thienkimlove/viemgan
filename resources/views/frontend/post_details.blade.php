@@ -11,7 +11,7 @@
             <h1 class="head">{{$post->title}}</h1>
             <div class="utility">
                 <div class="item">
-                    <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+                    <div class="fb-like" data-href="{{url($post->slug.'.html')}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
                 </div>
                 <div class="item">
                     <div class="g-plusone" data-size="medium"></div>
@@ -25,8 +25,8 @@
         </article><!--//box-detail-->
         <div class="box-share">
             <div class="item">
-                <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
-            </div>
+                <div class="fb-like" data-href="{{url($post->slug.'.html')}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+        </div>
             <div class="item">
                 <div class="g-plusone" data-size="medium"></div>
             </div>
@@ -36,12 +36,7 @@
       @include('frontend.post_tag', ['tags' => $post->tags])
       @endif
         <div class="box-form">
-            <form action="" method="post">
-                <textarea required="required" class="txt txt-content" name="content" placeholder="Ý kiến của bạn"></textarea>
-                <input required="required" type="text" class="txt txt-name" name="name" placeholder="Họ và tên"/>
-                <input required="required" type="email" class="txt txt-email" name="email" placeholder="Email"/>
-                <input type="submit" class="btn-submit" value="Gửi"/>
-            </form>
+            <div class="fb-comments" data-href="{{url($post->slug.'.html')}}" data-numposts="5" data-colorscheme="light"></div>
             <div class="clear"></div>
         </div><!--//box-form-->
         <div class="box-ad">

@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Post;
+use App\Question;
 use App\Services\LoremIpsumGenerator;
 use App\Tag;
 use App\User;
@@ -39,6 +40,7 @@ class PostTableSeeder extends Seeder {
         DB::table('categories')->truncate();
         DB::table('users')->truncate();
         DB::table('tags')->truncate();
+        DB::table('questions')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         User::create([
@@ -67,6 +69,13 @@ class PostTableSeeder extends Seeder {
             'name' => 'Bệnh gan 3',
             'parent_id'=>1
         ]);
+        for ($i = 1; $i < 20; $i ++) {
+            Question::create([
+                'question' => $lipsum->getContent(10, 'txt'),
+                'answer' => $lipsum->getContent(10, 'txt')
+            ]);
+        }
+
         $tagIds = [];
         for ($i = 1; $i < 10; $i ++) {
            $tagIds[] = Tag::create([

@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="main-content">
+    <div class="main-content" data-ng-controller="FaqController">
         <div class="col-left">
             <div class="box-contact">
                 <div class="col-left">
@@ -16,14 +16,14 @@
                     </ul>
                 </div>
                 <div class="col-right">
-                    <form action="" method="post">
-                        <input type="text" name="name" class="txt txt-name" placeholder="Họ và tên">
-                        <input type="email" name="email" class="txt txt-email" placeholder="Email">
-                        <input type="number" name="phone" class="txt txt-phone" placeholder="Số điện thoại">
-                        <textarea name="content" class="txt txt-content" placeholder="Nội dung"></textarea>
-                        <input type="submit" value="gửi đi" class="btn btn-submit">
-                        <input type="reset" value="xóa hết" class="btn btn-reset">
-                    </form>
+                    {!! Form::open(['method' => 'POST', 'route' => ['saveContact'], 'name' => 'contactForm']) !!}
+                        <input type="text" data-ng-model="contact.name" name="name" class="txt txt-name" placeholder="Họ và tên">
+                        <input type="email" data-ng-model="contact.email" name="email" class="txt txt-email" placeholder="Email">
+                        <input type="number" data-ng-model="contact.phone" name="phone" class="txt txt-phone" placeholder="Số điện thoại">
+                        <textarea name="content" data-ng-model="contact.content" class="txt txt-content" placeholder="Nội dung"></textarea>
+                        <input type="submit" value="gửi đi" data-ng-click="formSubmit($event)" class="btn btn-submit">
+                        <input type="reset" value="xóa hết" data-ng-click="formReset($event)" class="btn btn-reset">
+                    {!!Form::close()!!}
                 </div>
                 <div class="clear"></div>
             </div>

@@ -1,10 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\Category;
+use App\Contact;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\ContactRequest;
 use App\Post;
+use App\Question;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -40,7 +43,8 @@ class MainController extends Controller
     public function faq()
     {
        $page = 'faq';
-       return view('frontend.faq', compact('page'));
+       $questions = Question::latest()->paginate(10);
+       return view('frontend.faq', compact('page', 'questions'));
     }
     public function contact()
     {
@@ -52,6 +56,12 @@ class MainController extends Controller
         $tag = Tag::where('slug', $keyword)->first();
         $posts = $tag->posts();
         return view('frontend.search', compact('posts', 'keyword'));
+    }
+
+    public function saveContact(ContactRequest $request)
+    {
+       Contact::create($request->all());
+       return redirect('/');
     }
 
 }

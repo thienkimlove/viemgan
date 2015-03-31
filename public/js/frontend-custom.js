@@ -40,4 +40,14 @@ app.controller('HeaderController', function($scope, $window){
         event.preventDefault();
         $scope.rootCategoryTop = post;
     }
+}).controller('FaqController', function($scope){
+    $scope.contact = {};
+    $scope.formReset = function(event){
+        event.preventDefault();
+        $scope.contact = {};
+    }
+    $scope.formSubmit = function(event){
+        event.preventDefault();
+        $('form[name=contactForm]').submit();
+    }
 });

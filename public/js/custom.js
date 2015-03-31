@@ -10,4 +10,8 @@ app.controller('RootController', function($scope){
 
 }).controller('PostIndex', function($scope){
 
+}).controller('QuestionIndex', function($scope){
+
+}).controller('ContactIndex', function($scope){
+
 });

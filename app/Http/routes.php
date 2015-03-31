@@ -40,6 +40,9 @@ Route::get('search/{tag}', function($tag) {
 
 Route::resource('admin/categories', 'CategoriesController');
 Route::resource('admin/posts', 'PostsController');
+Route::resource('admin/questions', 'QuestionsController');
+Route::resource('admin/contacts', 'ContactsController');
+Route::post('saveContact', ['as' => 'saveContact', 'uses' => 'MainController@saveContact']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

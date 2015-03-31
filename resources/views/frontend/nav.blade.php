@@ -21,9 +21,6 @@
             </li>
             @endforeach
             <li>
-                <a class="{{ (!empty($page) && $page == 'share') ? 'active' : '' }}" href="{{url('chia-se')}}" title=""><span>Chia sẻ</span></a>
-            </li>
-            <li>
                 <a class="{{ (!empty($page) && $page == 'faq') ? 'active' : '' }} " href="{{url('hoi-dap')}}" title=""><span>Hỏi đáp</span></a>
             </li>
             <li>
