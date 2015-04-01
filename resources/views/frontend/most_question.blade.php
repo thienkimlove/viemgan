@@ -21,6 +21,7 @@
                         <h3><a href="{{url('hoi-dap')}}">{{str_limit($question->question, 15)}}</a></h3>
                     </div>
                     @endif
+                    <?php $i ++ ?>
                 @endforeach
             </div>
         </div>
