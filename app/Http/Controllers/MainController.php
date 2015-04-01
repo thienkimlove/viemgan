@@ -36,16 +36,21 @@ class MainController extends Controller
     {
         $category = Category::where('slug', $slug)->first();
         $page = $category->id;
-        $posts = Post::where('category_id', $category->id)->latest()->paginate(10);
         $latestPost = null;
-        if ($category->id == 4) {
-            $latestPost = Post::where('category_id', 4)->take(4)->get();
+        //viemgan virus.
+        if ($category->template == 1 | $category->template == 2) {
+            $latestPost = Post::where('category_id', 4)->latest()->take(4)->get();
+            $posts = Post::where('category_id', $category->id)->latest()->skip(4)->paginate(10);
+            $view = 'frontend.virus';
+        }  else {
+            //best_product.html
+            $posts = Post::where('category_id', $category->id)->latest()->paginate(10);
+            $view = 'frontend.category_details';
         }
-        $view = ($category->id == 4) ? 'frontend.virus' : 'frontend.category_details';
         return view($view, compact('category', 'posts', 'latestPost', 'page'))->with([
-            'meta_title' => ' Chuyên mục '.$category->title.' tại Viemgan.com.vn ',
+            'meta_title' => ' Chuyên mục '.$category->name.' tại Viemgan.com.vn ',
             'meta_desc' => '',
-            'meta_keywords' => $category->title,
+            'meta_keywords' => $category->name,
         ]);
     }
 

@@ -1,5 +1,5 @@
 <div class="col-right">
-    @if (!empty($page) && $page == 4)
+    @if (!empty($category) && $category->template == 1)
      @include('frontend.most_read_special')
     @else
      @include('frontend.most_read_normal')
