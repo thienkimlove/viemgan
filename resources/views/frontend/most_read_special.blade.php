@@ -13,7 +13,7 @@
                             </a>
                             <h3><a href="{{url($post->slug . '.html')}}">{{str_limit($post->title, 25)}}</a></h3>
                             <div class="number-post">
-                                <span class="no1">{{$i}}</span>
+                                <span class="no{{$i}}">{{$i}}</span>
                             </div>
                         </div>
                     <?php $i ++ ?>
