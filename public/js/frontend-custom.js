@@ -4,9 +4,6 @@ var app = angular.module('Application', [], function ($interpolateProvider) {
 });
 
 app.controller('MainController', function($scope, $http){
-    $scope.increaseLikes = function(postId) {
-        $http.post(Config.url + '/increaseLikes', { post_id : postId }).then(function(){});
-    }
 }).controller('HeaderController', function($scope, $window){
     $scope.keyword = '';
     $scope.search = function(){

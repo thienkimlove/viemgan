@@ -54,9 +54,14 @@
 @endsection
 @section('footer')
     <script type="text/javascript">
+        function increaseLikes(postId) {
+            $.post(Config.url + '/increaseLikes', { post_id : postId}, function(data){
+                console.log(data);
+            });
+        }
         window.fbAsyncInit = function() {
             FB.Event.subscribe('edge.create',
-                    function(response) {
+                    function() {
                         increaseLikes({{$post->id}});
                     }
             );
