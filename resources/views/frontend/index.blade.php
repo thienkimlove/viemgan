@@ -72,7 +72,7 @@
                         </div>
                         <div class="comment">
                             <i class="i-comment"></i>
-                            <span class="comment-c">{{$post->likes}} lượt bình luận</span>
+                            <span class="comment-c">{{$post->likes}} lượt thích</span>
                         </div>
                     </div>
                      @endif
