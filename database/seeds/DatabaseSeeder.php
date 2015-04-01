@@ -84,11 +84,16 @@ class PostTableSeeder extends Seeder {
         }
         foreach ([2, 3, 4, 5, 6] as $category) {
             for ($i = 1; $i < 40; $i ++) {
+               $rand = rand(0,10);
+               $hot = ($rand == 5) ? true : false;
+               $right = ($rand == 3) ? true : false;
                $post = Post::create([
                    'category_id' => $category,
                    'title' => $lipsum->getContent(10, 'txt').' '.Uuid::generate(),
                    'desc' => $lipsum->getContent(20, 'plain'),
                    'content' => $lipsum->getContent(500),
+                   'hot' => $hot,
+                   'right' => $right,
                   'image' => $image
                 ]);
                $post->tags()->sync(array_slice($tagIds, 0, rand(1, 10)));

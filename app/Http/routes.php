@@ -32,7 +32,11 @@ Route::get('search/{tag}', function($tag) {
         } else {
             $posts = Post::latest()->paginate(20);
         }
-        return view('frontend.search', compact('posts', 'keyword'));
+        return view('frontend.search', compact('posts', 'keyword'))->with([
+            'meta_title' => ' Kết quả tìm kiếm từ khóa '.$keyword.' tại Viemgan.com.vn ',
+            'meta_desc' => '',
+            'meta_keywords' => $keyword,
+        ]);
     }
 });
 
@@ -43,6 +47,7 @@ Route::resource('admin/posts', 'PostsController');
 Route::resource('admin/questions', 'QuestionsController');
 Route::resource('admin/contacts', 'ContactsController');
 Route::post('saveContact', ['as' => 'saveContact', 'uses' => 'MainController@saveContact']);
+Route::post('increaseLikes', ['as' => 'increaseLikes', 'uses' => 'MainController@increaseLikes']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -51,7 +56,13 @@ Route::controllers([
 
 Route::get('/{value}', function($value){
     if (preg_match('/([a-z0-9\-]+)\.html/', $value, $matches)) {
-        $post = Post::where('slug', $matches[1])->first();
-        return view('frontend.post_details', compact('post'));
+        $origin = $post = Post::where('slug', $matches[1])->first();
+        $origin->views = $origin->views + 1;
+        $origin->save();
+        return view('frontend.post_details', compact('post'))->with([
+            'meta_title' => $post->title. ' | Viemgan.com.vn ',
+            'meta_desc' => $post->desc,
+            'meta_keywords' => ($post->tagList)? implode(',', $post->tagList) : 'viemgan, huongdan, bai viet',
+        ]);
     }
 });

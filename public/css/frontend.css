@@ -300,6 +300,7 @@ img {
     text-indent: -9090px;
     background: url(../images/sprite.png) no-repeat 0px -370px;
     float: left;
+    float: left;
     z-index: 10;
 }
 .header-mid .box-find {
@@ -334,6 +335,7 @@ img {
     width: 30px;
     height: 30px;
     background: url(../images/sprite.png) no-repeat -96px -16px;
+    float: left;
     background-color: #098405;
     -webkit-border-radius: 50%;
     border-radius: 50%;
@@ -378,36 +380,42 @@ img {
 
 .i-view {
     background: url(../images/sprite.png) no-repeat -1px -1px;
+    float: left;
     width: 17px;
     height: 18px;
 }
 
 .i-comment {
     background: url(../images/sprite.png) no-repeat -25px 1px;
+    float: left;
     height: 19px;
     width: 19px;
 }
 
 .i-facebook {
     background: url(../images/sprite.png) no-repeat -1px -468px;
+    float: left;
     height: 31px;
     width: 31px;
 }
 
 .i-tw {
     background: url(../images/sprite.png) no-repeat -37px -468px;
+    float: left;
     height: 31px;
     width: 31px;
 }
 
 .i-youtube {
     background: url(../images/sprite.png) no-repeat -72px -468px;
+    float: left;
     height: 31px;
     width: 31px;
 }
 
 .i-google {
     background: url(../images/sprite.png) no-repeat -108px -468px;
+    float: left;
     height: 31px;
     width: 31px;
 }
@@ -482,11 +490,13 @@ img {
     outline: none;
     border: none;
     background: url(../images/sprite.png) no-repeat -272px -144px;
+    float: left;
 }
 .menu-left .inner .btn-menu {
     top: 60px;
     left: -52px;
     background: url(../images/sprite.png) no-repeat -240px -144px;
+    float: left;
 }
 .menu-left .inner .nav-mobile a {
     color: #fff;
@@ -1045,8 +1055,8 @@ img {
     margin-right: 0;
 }
 .main-content .col-right .box-medicine .data .item {
-    width: 96%;
-    margin: 0px 2% 15px;
+    width: 94%;
+    margin: 0px 3%;
 }
 .main-content .col-right .box-ad {
     margin-right: 0;
@@ -1264,10 +1274,10 @@ img {
     font-size: 13px;
     font-weight: bold;
 }
-.box-medicine .data .list-medicine .view, .box-medicine .data .list-medicine .comment {
+.box-medicine .data .view, .box-medicine .data .comment {
     margin-right: 5px;
 }
-.box-medicine .data .list-medicine .view .view-c, .box-medicine .data .list-medicine .view .comment-c, .box-medicine .data .list-medicine .comment .view-c, .box-medicine .data .list-medicine .comment .comment-c {
+.box-medicine .data .view .view-c, .box-medicine .data .view .comment-c, .box-medicine .data .comment .view-c, .box-medicine .data .comment .comment-c {
     margin-left: 5px;
     font-size: 11px;
     color: #999;
@@ -1309,6 +1319,10 @@ img {
 .box-care .data .list-dl .block-dl .thumb {
     float: left;
     margin-right: 10px;
+}
+
+.box-list-share {
+    margin-bottom: 15px;
 }
 
 .box-share {
@@ -1665,7 +1679,7 @@ img {
 }
 
 .box-rate {
-    margin: 0 2%;
+    margin: 0 4%;
     padding-bottom: 15px;
     border-bottom: 1px solid #999;
 }
@@ -1789,14 +1803,17 @@ img {
 
 .icon-phone {
     background: url(../images/sprite.png) no-repeat -160px -64px;
+    float: left;
 }
 
 .icon-link {
     background: url(../images/sprite.png) no-repeat -176px -64px;
+    float: left;
 }
 
 .icon-address {
     background: url(../images/sprite.png) no-repeat -176px -64px;
+    float: left;
 }
 
 .box-paging {
@@ -1844,6 +1861,7 @@ img {
 }
 .box-slide-product .owl-controls .owl-nav .owl-prev {
     background: url(../images/sprite.png) no-repeat -352px -16px;
+    float: left;
     right: 40px;
 }
 .box-slide-product .owl-controls .owl-nav .owl-prev:hover {
@@ -1851,6 +1869,7 @@ img {
 }
 .box-slide-product .owl-controls .owl-nav .owl-next {
     background: url(../images/sprite.png) no-repeat -384px -16px;
+    float: left;
     right: 10px;
 }
 .box-slide-product .owl-controls .owl-nav .owl-next:hover {
@@ -1889,6 +1908,7 @@ img {
 }
 .box-product .owl-controls .owl-nav .owl-prev {
     background: url(../images/sprite.png) no-repeat -96px -64px;
+    float: left;
     background-color: #1a2a58;
     right: 30px;
 }
@@ -1897,6 +1917,7 @@ img {
 }
 .box-product .owl-controls .owl-nav .owl-next {
     background: url(../images/sprite.png) no-repeat -128px -64px;
+    float: left;
     background-color: #1a2a58;
     right: 2px;
 }
@@ -2020,6 +2041,7 @@ img {
     width: 73px;
     height: 40px;
     background: url(../images/sprite.png) no-repeat -384px -96px;
+    float: left;
     background-color: #1a2a58;
     border: none;
     padding: 0;
@@ -2270,14 +2292,17 @@ img {
 .box-footer .item .link.link-contact {
     height: 80px;
     background: url(../images/sprite.png) no-repeat 0 -96px;
+    float: left;
 }
 .box-footer .item .link.link-facebook {
     height: 90px;
     background: url(../images/sprite.png) no-repeat 0 -272px;
+    float: left;
 }
 .box-footer .item .link.link-product {
     height: 90px;
     background: url(../images/sprite.png) no-repeat 0 -176px;
+    float: left;
 }
 .box-footer .item .link:hover {
     opacity: 0.8;
@@ -2382,6 +2407,7 @@ img {
     width: 28px;
     height: 28px;
     background: url(../images/sprite.png) no-repeat -208px -144px;
+    float: left;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -2434,6 +2460,7 @@ img {
     width: 11px;
     height: 11px;
     background: url(../images/sprite.png) no-repeat -208px 0;
+    float: left;
     margin-right: 5px;
     margin-top: 5px;
 }
@@ -2516,18 +2543,23 @@ img {
 }
 .box-contact .col-left ul li span.icon-1 {
     background: url(../images/sprite.png) no-repeat -208px -64px;
+    float: left;
 }
 .box-contact .col-left ul li span.icon-2 {
     background: url(../images/sprite.png) no-repeat -224px -64px;
+    float: left;
 }
 .box-contact .col-left ul li span.icon-3 {
     background: url(../images/sprite.png) no-repeat -240px -64px;
+    float: left;
 }
 .box-contact .col-left ul li span.icon-4 {
     background: url(../images/sprite.png) no-repeat -256px -64px;
+    float: left;
 }
 .box-contact .col-left ul li span.icon-5 {
     background: url(../images/sprite.png) no-repeat -272px -64px;
+    float: left;
 }
 .box-contact .col-left ul li a {
     color: #333;

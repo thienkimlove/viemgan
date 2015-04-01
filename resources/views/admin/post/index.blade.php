@@ -18,6 +18,8 @@
                                 <th>Desc</th>
                                 <th>Image</th>
                                 <th>Category</th>
+                                <th>Nổi bật</th>
+                                <th>Cột phải</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -29,6 +31,8 @@
                                 <td>{{$post->desc}}</td>
                                 <td><img src="{{url('/files/images/100_' . $post->image)}}" /></td>
                                 <td>{{$post->category->name}}</td>
+                                <td>{{($post->hot) ? 'Yes' : 'No'}}</td>
+                                <td>{{($post->right) ? 'Yes' : 'No'}}</td>
 
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-ng-click="goUrl('/posts/{{$post->id}}/edit')" type="button">Edit</button>&nbsp;

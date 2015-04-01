@@ -55,6 +55,6 @@ class Category extends Model {
      */
     public function latestThreePosts()
     {
-        return $this->hasMany('App\Post')->limit(3);
+        return $this->hasMany('App\Post')->hot(true)->limit(3);
     }
 }

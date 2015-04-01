@@ -21,6 +21,10 @@ class CreatePostsTable extends Migration {
             $table->text('desc');
             $table->text('content');
             $table->string('image');
+            $table->boolean('hot')->default(false);
+            $table->boolean('right')->default(false);
+            $table->integer('views')->default(0);
+            $table->integer('likes')->default(0);
             $table->boolean('status')->default(true);
 			$table->timestamps();
 

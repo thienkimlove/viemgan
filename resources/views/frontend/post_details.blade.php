@@ -11,7 +11,7 @@
             <h1 class="head">{{$post->title}}</h1>
             <div class="utility">
                 <div class="item">
-                    <div class="fb-like" data-href="{{url($post->slug.'.html')}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+                    <div class="fb-like"  data-href="{{url($post->slug.'.html')}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
                 </div>
                 <div class="item">
                     <div class="g-plusone" data-size="medium"></div>
@@ -51,4 +51,15 @@
     @include('frontend.right')
     <div class="clear"></div>
 </div>
+@endsection
+@section('footer')
+    <script type="text/javascript">
+        window.fbAsyncInit = function() {
+            FB.Event.subscribe('edge.create',
+                    function(response) {
+                        increaseLikes({{$post->id}});
+                    }
+            );
+        };
+    </script>
 @endsection

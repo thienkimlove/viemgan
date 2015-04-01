@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class Post extends Model {
 
-    protected $fillable = ['title', 'desc', 'content', 'image', 'category_id', 'status'];
+    protected $fillable = ['title', 'desc', 'content', 'image', 'category_id', 'status', 'hot', 'right', 'views', 'likes'];
 
     /**
      * When title change then slug will change.
@@ -40,6 +40,18 @@ class Post extends Model {
         if (strlen($tag) > 2) {
             $query->where('title', 'LIKE', '%'.$tag.'%');
         }
+    }
+
+    /**
+     * like tags.
+     * @param $query
+     * @param bool $case
+     * @return mixed
+     * @internal param $tag
+     */
+    public function scopeHot($query, $case = false)
+    {
+       return ($case) ? $query->where('hot', true) : $query->where('right', true);
     }
 
     /**

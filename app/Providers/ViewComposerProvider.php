@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Post;
+use App\Question;
 use Illuminate\Support\ServiceProvider;
 
 class ViewComposerProvider extends ServiceProvider {
@@ -17,8 +18,15 @@ class ViewComposerProvider extends ServiceProvider {
              $view->with('categories', Category::where('parent_id', null)->get());
         });
         view()->composer('frontend.right', function ($view) {
-            $view->with('mostReads', Post::latest()->take(4)->get())
-                 ->with('bestRates', Post::latest()->take(4)->get());
+            $view->with('mostReads', Post::hot()->latest()->take(4)->get());
+        });
+
+        view()->composer('frontend.most_rates', function ($view) {
+            $view->with('bestRates', Post::orderBy('likes', 'desc')->take(4)->get());
+        });
+
+        view()->composer('frontend.most_question', function ($view) {
+            $view->with('mostQuestions', Question::latest()->take(4)->get());
         });
 
         view()->composer('frontend.below', function($view){

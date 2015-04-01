@@ -3,7 +3,11 @@ var app = angular.module('Application', [], function ($interpolateProvider) {
     $interpolateProvider.endSymbol('%>');
 });
 
-app.controller('HeaderController', function($scope, $window){
+app.controller('MainController', function($scope, $http){
+    $scope.increaseLikes = function(postId) {
+        $http.post(Config.url + '/increaseLikes', { post_id : postId }).then(function(){});
+    }
+}).controller('HeaderController', function($scope, $window){
     $scope.keyword = '';
     $scope.search = function(){
         if ($scope.keyword.length > 2) {

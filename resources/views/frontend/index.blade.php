@@ -68,11 +68,11 @@
                         <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
                         <div class="view fl">
                             <span class="i-view"></span>
-                            <span class="view-c">45 lượt xem</span>
+                            <span class="view-c">{{$post->views}} lượt xem</span>
                         </div>
                         <div class="comment">
                             <i class="i-comment"></i>
-                            <span class="comment-c">22 lượt bình luận</span>
+                            <span class="comment-c">{{$post->likes}} lượt bình luận</span>
                         </div>
                     </div>
                      @endif
