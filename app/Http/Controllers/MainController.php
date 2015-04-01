@@ -94,12 +94,12 @@ class MainController extends Controller
 
     /**
      * ajax increase likes.
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function increaseLikes()
+    public function increaseLikes(Request $request)
     {
-        $id = Request::input('post_id');
-        $post = Post::findOrFail($id);
+        $post = Post::findOrFail($request->input('post_id'));
         $post->likes = $post->likes + 1;
         $post->save();
 

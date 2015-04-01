@@ -54,15 +54,34 @@
 @endsection
 @section('footer')
     <script type="text/javascript">
-        function increaseLikes(postId) {
-            $.post(Config.url + '/increaseLikes', { post_id : postId}, function(data){
-                console.log(data);
+        Config.postId = '{{$post->id}}';
+        Config.token = '{{ app('Illuminate\Encryption\Encrypter')->encrypt(csrf_token()) }}';
+        function increaseLikes() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-XSRF-Token': Config.token
+                }
+            });
+
+            $.ajax({
+                type  : 'POST',
+                url   : Config.url + '/increaseLikes',
+                data  : { post_id : Config.postId},
+                cache : false,
+                beforeSend : function() {
+                },
+                success : function(data) {
+                    console.log(data);
+                },
+                error : function() {
+                }
             });
         }
         window.fbAsyncInit = function() {
             FB.Event.subscribe('edge.create',
                     function() {
-                        increaseLikes({{$post->id}});
+                        increaseLikes();
                     }
             );
         };
