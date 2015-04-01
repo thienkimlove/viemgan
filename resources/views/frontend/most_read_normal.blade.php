@@ -18,7 +18,6 @@
                             <p>
                                 {{str_limit($post->desc,70)}}
                             </p>
-                            @endif
                         </div>
                     @else
                         <div class="list-medicine">
