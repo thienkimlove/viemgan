@@ -19,9 +19,22 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
-		$this->call('PostTableSeeder');
+		//$this->call('PostTableSeeder');
+		$this->call('ClearSeeder');
 	}
 
+}
+
+class ClearSeeder extends Seeder {
+    public function run()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('post_tag')->truncate();
+        DB::table('posts')->truncate();
+        DB::table('tags')->truncate();
+        DB::table('questions')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+    }
 }
 
 class PostTableSeeder extends Seeder {

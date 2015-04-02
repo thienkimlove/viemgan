@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Viemgan Admin v2.0</a>
+        <a class="navbar-brand">Viemgan Admin v2.0</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -45,7 +45,7 @@
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i>Categories<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-files-o fa-fw"></i>Categories<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{url('admin/categories')}}">List Category</a>
@@ -57,7 +57,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i>Posts<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-files-o fa-fw"></i>Posts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{url('admin/posts')}}">List Posts</a>
@@ -69,7 +69,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i>Questions<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-files-o fa-fw"></i>Questions<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{url('admin/questions')}}">List Questions</a>
@@ -81,7 +81,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i>Contacts<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-files-o fa-fw"></i>Contacts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{url('admin/contacts')}}">List Contacts</a>
