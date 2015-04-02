@@ -4,14 +4,19 @@
 </div>
 
 <div class="form-group">
-     {!! Form::label('desc', 'Description') !!}
-     {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
+    {!! Form::label('image', 'Image') !!}
+    @if ($post->image)
+        <img src="{{url('files/images/100_' .$post->image)}}" />
+        <hr>
+    @endif
+    {!! Form::file('image', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-     {!! Form::label('content', 'Content') !!}
-     {!! Form::textarea('content', null, ['class' => 'form-control ckeditor']) !!}
+    {!! Form::label('category_id', 'Category') !!}
+    {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
 </div>
+
 
 <div class="form-group">
     {!! Form::label('hot', 'Make post display in homepage') !!}
@@ -23,18 +28,15 @@
     {!! Form::checkbox('right', null, ['class' => 'form-control']) !!}
 </div>
 
+
 <div class="form-group">
-    {!! Form::label('image', 'Image') !!}
-    @if ($post->image)
-        <img src="{{url('files/images/100_' .$post->image)}}" />
-        <hr>
-    @endif
-     {!! Form::file('image', null, ['class' => 'form-control']) !!}
+     {!! Form::label('desc', 'Description') !!}
+     {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-     {!! Form::label('category_id', 'Category') !!}
-     {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+     {!! Form::label('content', 'Content') !!}
+     {!! Form::textarea('content', null, ['class' => 'form-control ckeditor']) !!}
 </div>
 
 <div class="form-group">
