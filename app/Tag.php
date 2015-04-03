@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 class Tag extends Model {
 
@@ -18,7 +19,11 @@ class Tag extends Model {
     public function setNameAttribute($name)
     {
         $this->attributes['name'] = $name;
-        $this->attributes['slug'] =  Str::limit( Str::slug($name), 100, '');
+        $slug = Str::limit( Str::slug($name), 100, '');
+        if ($this->where('slug', $slug)->first()){
+            $slug = Str::limit( Str::slug($name.' '.Uuid::generate()), 100, '');
+        }
+        $this->attributes['slug'] =  $slug;
     }
 
     /**

@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 class Post extends Model {
 
@@ -17,7 +18,12 @@ class Post extends Model {
     public function setTitleAttribute($title)
     {
         $this->attributes['title'] = $title;
-        $this->attributes['slug'] =  Str::limit( Str::slug($title), 200, '');
+        $slug = Str::limit( Str::slug($title), 200, '');
+        //check if slug exit.
+        if ($this->where('slug', $slug)->first()) {
+            $slug = Str::limit( Str::slug($title. ' ' . Uuid::generate()), 200, '');
+        }
+        $this->attributes['slug'] = $slug;
     }
 
     /**

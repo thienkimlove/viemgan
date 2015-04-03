@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 class Category extends Model {
 
@@ -19,7 +20,11 @@ class Category extends Model {
     public function setNameAttribute($name)
     {
         $this->attributes['name'] = $name;
-        $this->attributes['slug'] =  Str::limit( Str::slug($name), 32, '');
+        $slug =  Str::limit( Str::slug($name), 32, '');
+        if ($this->where('slug', $slug)->first()) {
+            $slug =  Str::limit( Str::slug($name.' '.Uuid::generate()), 32, '');
+        }
+        $this->attributes['slug'] = $slug;
     }
 
     /**
