@@ -17,9 +17,9 @@ class MainController extends Controller
     public function index()
     {
         $page = 'index';
-        $latestPost = Post::hot(true)->latest()->take(4)->get();
+        $latestPost = Post::hot(true)->latest()->take(5)->get();
         $cateIds = Category::where('parent_id', 1)->lists('id');
-        $rootCategoryLatest = Post::hot(true)->whereIn('category_id', $cateIds)->latest()->take(4)->get();
+        $rootCategoryLatest = Post::hot(true)->whereIn('category_id', $cateIds)->latest()->take(5)->get();
 
         $top2 = Post::hot(true)->where('category_id', 2)->latest()->take(8)->get();
         $top3 = Post::hot(true)->where('category_id', 3)->latest()->take(8)->get();
@@ -39,7 +39,7 @@ class MainController extends Controller
         $latestPost = null;
         //viemgan virus.
         if ($category->template == 1 | $category->template == 2) {
-            $latestPost = Post::where('category_id', 4)->latest()->take(4)->get();
+            $latestPost = Post::where('category_id', 4)->latest()->take(5)->get();
             $posts = Post::where('category_id', $category->id)->latest()->skip(4)->paginate(10);
             $view = 'frontend.virus';
         }  else {
@@ -48,7 +48,7 @@ class MainController extends Controller
             $view = 'frontend.category_details';
         }
         return view($view, compact('category', 'posts', 'latestPost', 'page'))->with([
-            'meta_title' => ' Chuyên mục '.$category->name.' tại Viemgan.com.vn ',
+            'meta_title' => ($category->id == 7) ? $category->name : ' Chuyên mục '.$category->name.' tại Viemgan.com.vn ',
             'meta_desc' => '',
             'meta_keywords' => $category->name,
         ]);

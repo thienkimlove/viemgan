@@ -25,14 +25,16 @@ class PostRepository extends BaseRepository
 
     public function store($request)
     {
-      $post = $this->model->create([
+        $post = $this->model->create([
             'title' => $request->input('title'),
             'desc' => $request->input('desc'),
             'content' => $request->input('content'),
-            'image' => ($request->file('image') && $request->file('image')->isValid())?  $this->saveImage($request) : '',
-            'category_id' => $request->input('category_id')
+            'image' => ($request->file('image') && $request->file('image')->isValid()) ? $this->saveImage($request) : '',
+            'category_id' => $request->input('category_id'),
+            'right' => $request->input('right'),
+            'hot' => $request->input('hot')
         ]);
-       $this->syncTags($post, $request);
+        $this->syncTags($post, $request);
     }
 
 
@@ -56,7 +58,9 @@ class PostRepository extends BaseRepository
             'title' => $request->input('title'),
             'desc' => $request->input('desc'),
             'content' => $request->input('content'),
-            'category_id' => $request->input('category_id')
+            'category_id' => $request->input('category_id'),
+            'right' => $request->input('right'),
+            'hot' => $request->input('hot')
         ];
 
         if ($request->file('image') && $request->file('image')->isValid()) {

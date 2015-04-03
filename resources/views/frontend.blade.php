@@ -52,8 +52,6 @@
 <script>
     var Config = {};
     Config.url = '{{ url('/') }}';
-    Config.latestPost = {!! !empty($latestPost)? $latestPost->toJson() : "{}" !!};
-    Config.rootCategoryLatest = {!! !empty($rootCategoryLatest)? $rootCategoryLatest->toJson() : "{}" !!};
 </script>
 <script type="text/javascript" src="{{url('/js/frontend.js')}}"></script>
 <script type="text/javascript" src="{{url('/js/frontend-custom.js')}}"></script>

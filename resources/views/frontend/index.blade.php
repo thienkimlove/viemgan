@@ -2,26 +2,32 @@
 
 @section('content')
 @include('frontend.top_news', ['latestPost' => $latestPost])
-<div class="main-content" data-ng-controller="HomeController">
+<div class="main-content">
     <div class="col-left">
         <div class="box-summary cf">
             <h3 class="title">
                 <span>Các bệnh gan</span>
             </h3>
-
+            @if ($first = $rootCategoryLatest->shift())
             <article class="item-summary">
-                <a data-ng-href="<%goPost(rootCategoryTop)%>" title="" class="thumb-img">
-                    <img data-ng-src="<%goPostImage(rootCategoryTop, '400_')%>" alt=""/>
+                <a href="{{url($first->slug.'.html')}}" title="" class="thumb-img">
+                    <img src="{{url('files/images/400_'.$first->image)}}" alt=""/>
                 </a>
-                <h3 data-ng-bind="rootCategoryTop.title | limitTo:50"></h3>
-                <p data-ng-bind="rootCategoryTop.desc"></p>
+                <h3>{{str_limit($first->title, 50)}}</h3>
+                <p>{{str_limit($first->desc, 150)}}</p>
             </article>
+            @endif
             <div class="item-list">
-                <article class="block" data-ng-repeat="post in rootCategoryLatest" data-ng-click="changeLatest(post, $event)">
-                    <a data-ng-href="<%goPost(post)%>" class="thumb"><img data-ng-src="<%goPostImage(post, '100_')%>" width="115" height="80" alt=""></a>
-                    <h3><a data-ng-href="<%goPost(post)%>" data-ng-bind="post.title | limitTo:50"></a></h3>
+                @foreach($rootCategoryLatest as $post)
+                <article class="block">
+                    <a href="{{$post->slug.'.html'}}" class="thumb">
+                        <img src="{{url('files/images/100_'.$post->image)}}" width="115" height="80" alt="">
+                    </a>
+                    <h3><a href="{{$post->slug.'.html'}}">{{str_limit($post->title, 50)}}</a></h3>
                 </article>
+                @endforeach
             </div>
+
         </div>
         <div class="box-ad">
             <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
