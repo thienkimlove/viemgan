@@ -20,12 +20,12 @@
 
 <div class="form-group">
     {!! Form::label('hot', 'Make post display in homepage') !!}
-    {!! Form::checkbox('hot', null, ['class' => 'form-control']) !!}
+    {!! Form::checkbox('hot', null, null) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('right', 'Make post display in homepage right column') !!}
-    {!! Form::checkbox('right', null, ['class' => 'form-control']) !!}
+    {!! Form::checkbox('right', null, null) !!}
 </div>
 
 
