@@ -12,7 +12,7 @@
                 @foreach ($mostQuestions  as $question)
                     @if($i==0)
                     <div class="block-m">
-                        <a href="{{url('hoi-dap')}}"><img src="{{url('images/member.jpg')}}" alt="Title"></a>
+                        <a href="{{url('hoi-dap')}}"><img src="{{url('images/img_hoidap.png')}}" alt="Title"></a>
                         <h3><a href="{{url('hoi-dap')}}">{{str_limit($question->question, 15)}}</a></h3>
                         <p>{{str_limit($question->answer, 40)}}</p>
                     </div>
