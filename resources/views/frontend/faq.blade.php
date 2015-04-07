@@ -1,6 +1,5 @@
 @extends('frontend')
 
-
 @section('content')
     <div class="main-content">
         <div class="main-content">
@@ -13,6 +12,9 @@
                     <article class="item">
                         <div class="number">{{$question->id}}</div>
                         <div class="content">
+                            <a>
+                                <img src="{{url('files/images/200_'. $question->image)}}" width="220" height="130" />
+                            </a>
                             <h3 class="title-faq">{{$question->question}}</h3>
                             <time class="time" datetime="{{$question->updated_at}}">{{$question->updated_at}}</time>
                         </div>

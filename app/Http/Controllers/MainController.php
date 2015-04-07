@@ -48,7 +48,7 @@ class MainController extends Controller
             $view = 'frontend.category_details';
         }
         return view($view, compact('category', 'posts', 'latestPost', 'page'))->with([
-            'meta_title' => ($category->id == 7) ? $category->name : ' Chuyên mục '.$category->name.' tại Viemgan.com.vn ',
+            'meta_title' => $category->name,
             'meta_desc' => '',
             'meta_keywords' => $category->name,
         ]);
@@ -59,7 +59,7 @@ class MainController extends Controller
         $page = 'faq';
         $questions = Question::latest()->paginate(10);
         return view('frontend.faq', compact('page', 'questions'))->with([
-            'meta_title' => ' Liên hệ | Viemgan.com.vn ',
+            'meta_title' => ' Hỏi Đáp | Viemgan.com.vn ',
             'meta_desc' => '',
             'meta_keywords' => 'hỏi đáp',
         ]);

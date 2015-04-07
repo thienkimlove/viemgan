@@ -4,6 +4,15 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('image', 'Image') !!}
+    @if ($question->image)
+        <img src="{{url('files/images/100_' .$question->image)}}" />
+        <hr>
+    @endif
+    {!! Form::file('image', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
      {!! Form::label('answer', 'Answer') !!}
      {!! Form::textarea('answer', null, ['class' => 'form-control']) !!}
 </div>

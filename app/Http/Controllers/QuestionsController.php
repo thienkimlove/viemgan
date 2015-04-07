@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\QuestionRequest;
 use App\Question;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class QuestionsController extends Controller {
 
@@ -43,7 +44,7 @@ class QuestionsController extends Controller {
      */
 	public function store(QuestionRequest $request)
 	{
-		Question::create($request->all());
+		Question::create($this->questionRepository($request));
         flash('Create question success!', 'success');
         return redirect('admin/questions');
 	}
@@ -81,7 +82,7 @@ class QuestionsController extends Controller {
 	public function update($id, QuestionRequest $request)
 	{
         $question =  Question::findOrFail($id);
-        $question->update($request->all());
+        $question->update($this->questionRepository($request, $question->image));
         flash('Create question success!', 'success');
         return redirect('admin/questions');
 	}
@@ -100,4 +101,33 @@ class QuestionsController extends Controller {
         return redirect('admin/questions');
 	}
 
+    /**
+     * save image and create resize thumb.
+     * @param $request
+     * @param null $old_image
+     * @return string
+     * @internal param null $old
+     */
+    protected function questionRepository($request, $old_image = null)
+    {
+        $update = $request->all();
+        if ($request->file('image') && $request->file('image')->isValid()) {
+            $filename = md5(time()) . '.' . $request->file('image')->guessExtension();
+            Image::make($request->file('image')->getRealPath())
+                ->resize(500, 330)->save(public_path() . '/files/images/500_' . $filename)
+                ->resize(288, 191)->save(public_path() . '/files/images/400_' . $filename)
+                ->resize(235, 156)->save(public_path() . '/files/images/300_' . $filename)
+                ->resize(220, 130)->save(public_path() . '/files/images/200_' . $filename)
+                ->resize(115, 80)->save(public_path() . '/files/images/100_' . $filename);
+            if ($old_image) {
+                @unlink(public_path() . '/files/images/100_' . $old_image);
+                @unlink(public_path() . '/files/images/200_' . $old_image);
+                @unlink(public_path() . '/files/images/300_' . $old_image);
+                @unlink(public_path() . '/files/images/400_' . $old_image);
+                @unlink(public_path() . '/files/images/500_' . $old_image);
+            }
+            $update['image'] = $filename;
+        }
+       return $update;
+    }
 }

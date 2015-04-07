@@ -16,6 +16,7 @@
                                 <th>#</th>
                                 <th>Question</th>
                                 <th>Answer</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -25,6 +26,7 @@
                                     <td>{{$question->id}}</td>
                                     <td>{{str_limit($question->question, 40)}}</td>
                                     <td>{{ str_limit($question->answer, 40) }}</td>
+                                    <td><img src="{{url('/files/images/100_' . $question->image)}}" /></td>
                                     <td>
                                         <button class="btn btn-primary btn-sm" data-ng-click="goUrl('/questions/{{$question->id}}/edit')" type="button">Edit</button>
                                         <br>

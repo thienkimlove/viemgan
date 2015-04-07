@@ -3,7 +3,7 @@
         <ul class="cf">
             <li>
                 <a class="{{ (!empty($page) && $page == 'index') ?  'active' : '' }}" href="{{url('/')}}" title="">
-                    <span>TRANG CHỦ</span>
+                    <span>HOME</span>
                 </a>
             </li>
             @foreach ($categories as $cate)

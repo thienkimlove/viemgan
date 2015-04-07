@@ -10,9 +10,9 @@
                 <a href="{{url($post->slug . '.html')}}" class="thumb">
                     <img src="{{url('files/images/100_' . $post->image)}}" width="115" height="80" alt="">
                 </a>
-                <h3><a href="{{url($post->slug . '.html')}}">{{str_limit($post->title, 25)}}</a></h3>
+                <h3><a href="{{url($post->slug . '.html')}}">{{str_limit($post->title, 40)}}</a></h3>
                 <p>
-                    {{$post->desc}}
+                    {{str_limit($post->desc, 70)}}
                 </p>
             </div>
             @endforeach
