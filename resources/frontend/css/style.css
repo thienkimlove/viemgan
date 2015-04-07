@@ -1105,7 +1105,6 @@ img {
     padding: 8px 0;
     font-size: 14px;
     line-height: 18px;
-    word-break: break-all;
 }
 .box-detail img {
     max-width: 100%;
@@ -1695,13 +1694,12 @@ img {
     padding-left: 125px;
 }
 .box-rate .intro-product .title-p {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: bold;
     color: #068407;
 }
 .box-rate .intro-product .rate, .box-rate .intro-product .des {
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 12px;
     color: #068407;
 }
 .box-rate .intro-product .des {
