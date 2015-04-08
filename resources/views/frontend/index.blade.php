@@ -34,7 +34,7 @@
         </div>
         <div class="box-best-product cf">
             <h3 class="title">
-                <span>Sản phẩm tốt cho gan</span>
+                <span>Cẩm nang bệnh Gan</span>
             </h3>
             <div class="list-product">
                 @foreach ($top2 as $post)
