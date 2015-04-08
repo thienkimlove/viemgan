@@ -1,13 +1,22 @@
 <?php namespace App;
 
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Webpatser\Uuid\Uuid;
 
-class Category extends Model {
+class Category extends Model implements SluggableInterface {
 
-	protected $fillable = ['name', 'parent_id', 'template'];
+    use SluggableTrait;
+
+    protected $sluggable = array(
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    );
+
+	protected $fillable = ['name', 'parent_id', 'template', 'slug'];
 
 
     protected $appends = ['sub_count'];
@@ -17,7 +26,7 @@ class Category extends Model {
      * @param $name
      * @internal param $title
      */
-    public function setNameAttribute($name)
+  /*  public function setNameAttribute($name)
     {
         $this->attributes['name'] = $name;
         $slug =  Str::limit( Str::slug($name), 32, '');
@@ -25,7 +34,7 @@ class Category extends Model {
             $slug =  Str::limit( Str::slug($name.' '.Uuid::generate()), 32, '');
         }
         $this->attributes['slug'] = $slug;
-    }
+    }*/
 
     /**
      * parent of this category

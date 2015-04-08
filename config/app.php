@@ -140,6 +140,7 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
         //'Baum\Providers\BaumServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
 
 		/*

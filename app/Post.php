@@ -1,13 +1,23 @@
 <?php namespace App;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Webpatser\Uuid\Uuid;
 
-class Post extends Model {
+class Post extends Model implements SluggableInterface {
 
-    protected $fillable = ['title', 'desc', 'content', 'image', 'category_id', 'status', 'hot', 'right', 'views', 'likes'];
+    use SluggableTrait;
+
+    protected $sluggable = array(
+        'build_from' => 'title',
+        'save_to'    => 'slug',
+    );
+
+
+    protected $fillable = ['title', 'desc', 'content', 'image', 'category_id', 'status', 'hot', 'right', 'views', 'likes', 'slug'];
 
     /**
      * When title change then slug will change.
@@ -15,7 +25,7 @@ class Post extends Model {
      * @internal param $name
      * @internal param $title
      */
-    public function setTitleAttribute($title)
+   /* public function setTitleAttribute($title)
     {
         $this->attributes['title'] = $title;
         $slug = Str::limit( Str::slug($title), 200, '');
@@ -24,7 +34,7 @@ class Post extends Model {
             $slug = Str::limit( Str::slug($title. ' ' . Uuid::generate()), 200, '');
         }
         $this->attributes['slug'] = $slug;
-    }
+    }*/
 
     /**
      * post belong to one category.

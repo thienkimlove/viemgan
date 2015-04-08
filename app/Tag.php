@@ -1,12 +1,21 @@
 <?php namespace App;
 
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Webpatser\Uuid\Uuid;
 
-class Tag extends Model {
+class Tag extends Model implements  SluggableInterface {
 
-    protected $fillable = ['name'];
+    use SluggableTrait;
+
+    protected $sluggable = array(
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    );
+
+    protected $fillable = ['name', 'slug'];
 
 
     /**
@@ -16,7 +25,7 @@ class Tag extends Model {
      * @internal param $name
      * @internal param $title
      */
-    public function setNameAttribute($name)
+    /*public function setNameAttribute($name)
     {
         $this->attributes['name'] = $name;
         $slug = Str::limit( Str::slug($name), 100, '');
@@ -24,7 +33,7 @@ class Tag extends Model {
             $slug = Str::limit( Str::slug($name.' '.Uuid::generate()), 100, '');
         }
         $this->attributes['slug'] =  $slug;
-    }
+    }*/
 
     /**
      * get the posts associated with tag
