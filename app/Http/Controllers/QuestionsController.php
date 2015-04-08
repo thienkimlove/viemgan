@@ -114,10 +114,11 @@ class QuestionsController extends Controller {
         if ($request->file('image') && $request->file('image')->isValid()) {
             $filename = md5(time()) . '.' . $request->file('image')->guessExtension();
             Image::make($request->file('image')->getRealPath())
-                ->resize(500, 330)->save(public_path() . '/files/images/500_' . $filename)
-                ->resize(288, 191)->save(public_path() . '/files/images/400_' . $filename)
-                ->resize(235, 156)->save(public_path() . '/files/images/300_' . $filename)
-                ->resize(220, 130)->save(public_path() . '/files/images/200_' . $filename)
+                ->resize(500, 330)->save(public_path() . '/files/images/600_' . $filename)
+                ->resize(414, 275)->save(public_path() . '/files/images/500_' . $filename)
+                ->resize(314, 209)->save(public_path() . '/files/images/400_' . $filename)
+                ->resize(282, 167)->save(public_path() . '/files/images/300_' . $filename)
+                ->resize(235, 156)->save(public_path() . '/files/images/200_' . $filename)
                 ->resize(115, 80)->save(public_path() . '/files/images/100_' . $filename);
             if ($old_image) {
                 @unlink(public_path() . '/files/images/100_' . $old_image);
@@ -125,6 +126,7 @@ class QuestionsController extends Controller {
                 @unlink(public_path() . '/files/images/300_' . $old_image);
                 @unlink(public_path() . '/files/images/400_' . $old_image);
                 @unlink(public_path() . '/files/images/500_' . $old_image);
+                @unlink(public_path() . '/files/images/600_' . $old_image);
             }
             $update['image'] = $filename;
         }

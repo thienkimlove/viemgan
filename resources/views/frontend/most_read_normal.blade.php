@@ -10,7 +10,7 @@
                     @if ($i == 0)
                         <div class="block-m">
                             <a href="{{url($post->slug . '.html')}}" class="thumb-img">
-                                <img src="{{url('files/images/200_' . $post->image)}}" alt="">
+                                <img src="{{url('files/images/300_' . $post->image)}}" alt="">
                             </a>
                             <h3>
                                 <a href="{{url($post->slug . '.html')}}" class="thumb">{{str_limit($post->title, 40)}}</a>

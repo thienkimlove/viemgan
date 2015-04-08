@@ -12,7 +12,7 @@
                     @if ($i == 0)
                         <div class="block-m">
                             <a href="{{url('hoi-dap')}}" class="thumb-img">
-                                <img src="{{url('files/images/200_' . $question->image)}}" alt="">
+                                <img src="{{url('files/images/300_' . $question->image)}}" alt="">
                             </a>
                             <h3>
                                 <a href="{{url('hoi-dap')}}" class="thumb">{{str_limit($question->question, 40)}}</a>

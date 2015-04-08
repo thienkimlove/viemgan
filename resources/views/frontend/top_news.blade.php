@@ -3,7 +3,7 @@
     <div class="top-news">
         <article class="item">
             <a href="{{url($firstPost->slug.'.html')}}" title="top" class="thumb-img">
-                <img src="{{url('files/images/500_'.$firstPost->image)}}" alt="{{$firstPost->title}}"/>
+                <img src="{{url('files/images/600_'.$firstPost->image)}}" alt="{{$firstPost->title}}"/>
             </a>
             <h3>
                 <a href="{{url($firstPost->slug.'.html')}}" title="{{$firstPost->title}}">{{str_limit($firstPost->title, 50)}}</a>
