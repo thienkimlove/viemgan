@@ -53,7 +53,7 @@
             <div class="data">
                 <div class="item">
                     <?php $i = 0; ?>
-                    @foreach ($category->latestThreePosts as $post)
+                    @foreach ($category->homePageLatestThreePosts as $post)
                     @if ($i == 0)
                     <div class="block-m">
                         <a href="{{url($post->slug.'.html')}}" class="thumb-img">
