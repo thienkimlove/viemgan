@@ -76,8 +76,8 @@ class Category extends Model implements SluggableInterface {
      * three post in homepage.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function homePageLatestThreePosts()
+    public function homePageLatestSixPosts()
     {
-        return $this->hasMany('App\Post')->hot(true)->limit(3);
+        return $this->hasMany('App\Post')->hot(true)->limit(6);
     }
 }

@@ -23,7 +23,7 @@ class MainController extends Controller
 
         $top2 = Post::hot(true)->where('category_id', 9)->latest()->take(8)->get();
         $top3 = Post::hot(true)->where('category_id', 3)->latest()->take(8)->get();
-        $subData = Category::whereIn('id', [2, 3])->get();
+        $subData = Category::where('id', 2)->first();
 
         return view('frontend.index', compact('page', 'latestPost', 'rootCategoryLatest', 'top2', 'top3', 'subData'))->with([
             'meta_title' => ' Trang chủ Viemgan.com.vn ',

@@ -49,11 +49,11 @@
             <h3 class="title">
                 <span>Dược liệu với bệnh gan</span>
             </h3>
-            @foreach($subData as $category)
+
             <div class="data">
                 <div class="item">
-                    <?php $i = 0; ?>
-                    @foreach ($category->homePageLatestThreePosts as $post)
+                    <?php $i = 0;  ?>
+                    @foreach ($subData->homePageLatestSixPosts->slice(0, 3) as $post)
                     @if ($i == 0)
                     <div class="block-m">
                         <a href="{{url($post->slug.'.html')}}" class="thumb-img">
@@ -86,7 +86,43 @@
                    @endforeach
                 </div>
             </div>
-            @endforeach
+            <div class="data">
+                <div class="item">
+                    <?php $i = 0; ?>
+                    @foreach ($subData->homePageLatestSixPosts->slice(3, 3) as $post)
+                        @if ($i == 0)
+                            <div class="block-m">
+                                <a href="{{url($post->slug.'.html')}}" class="thumb-img">
+                                    <img src="{{url('files/images/300_'.$post->image)}}" alt="">
+                                </a>
+                                <h3>
+                                    <a href="{{url($post->slug.'.html')}}" class="thumb">{{str_limit($post->title, 50)}}</a>
+                                </h3>
+                                <p>
+                                    {{str_limit($post->desc, 100)}}
+                                </p>
+                            </div>
+                        @else
+                            <div class="list-medicine">
+                                <a href="{{url($post->slug.'.html')}}" class="thumb">
+                                    <img src="{{url('files/images/100_'.$post->image)}}" width="115" height="80" alt="">
+                                </a>
+                                <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
+                                <div class="view fl">
+                                    <span class="i-view"></span>
+                                    <span class="view-c">{{$post->views}} lượt xem</span>
+                                </div>
+                                <div class="comment">
+                                    <i class="i-comment"></i>
+                                    <span class="comment-c">{{$post->likes}} lượt thích</span>
+                                </div>
+                            </div>
+                        @endif
+                        <?php $i ++ ?>
+                    @endforeach
+                </div>
+            </div>
+
         </div>
         <div class="box-ad">
             <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
