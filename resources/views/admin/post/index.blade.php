@@ -5,7 +5,14 @@
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Display posts list.
+                    <div class="input-group custom-search-form">
+                        <input type="text" data-ng-model="postTitle" class="form-control" placeholder="Search post..">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" data-ng-click="searchPost($event)" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                    </div>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">

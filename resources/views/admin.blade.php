@@ -34,6 +34,7 @@
 <script>
     var Config = {};
     Config.baseUrl = '{{url('/')}}';
+    Config.searchPost = '{{ !empty($searchPost) ? $searchPost : '' }}';
 </script>
 
 <script src="{{url('/js/admin.js')}}"></script>

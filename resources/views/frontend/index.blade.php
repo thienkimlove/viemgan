@@ -39,7 +39,7 @@
             <div class="list-product">
                 @foreach ($top2 as $post)
                 <article class="item">
-                    <a href="{{url($post->slug.'.html')}}" class="thumb-img"><img src="{{url('files/images/100_'.$post->image)}}" alt=""></a>
+                    <a href="{{url($post->slug.'.html')}}" class="thumb-img"><img src="{{url('files/images/200_'.$post->image)}}" alt=""></a>
                     <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
                 </article>
                 @endforeach

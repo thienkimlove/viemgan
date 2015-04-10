@@ -9,7 +9,13 @@ app.controller('RootController', function($scope){
 }).controller('CategoryIndex', function($scope){
 
 }).controller('PostIndex', function($scope){
-
+    $scope.postTitle = Config.searchPost;
+    $scope.searchPost = function(event){
+        event.preventDefault();
+        if ($scope.postTitle.length > 2) {
+            window.location = Config.baseUrl + '/admin/posts?q=' + encodeURI($scope.postTitle);
+        }
+    }
 }).controller('QuestionIndex', function($scope){
 
 }).controller('ContactIndex', function($scope){
