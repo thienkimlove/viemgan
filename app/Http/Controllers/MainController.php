@@ -21,7 +21,7 @@ class MainController extends Controller
         $cateIds = Category::where('parent_id', 1)->lists('id');
         $rootCategoryLatest = Post::hot(true)->whereIn('category_id', $cateIds)->latest()->take(5)->get();
 
-        $top2 = Post::hot(true)->where('category_id', 9)->latest()->take(8)->get();
+        $top2 = Post::hot(true)->where('category_id', 9)->latest()->take(6)->get();
         $top3 = Post::hot(true)->where('category_id', 3)->latest()->take(8)->get();
         $subData = Category::where('id', 2)->first();
 
