@@ -1,12 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Http\Requests\QuestionRequest;
 use App\Question;
-use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
 
 class QuestionsController extends Controller {
 
@@ -113,13 +110,15 @@ class QuestionsController extends Controller {
         $update = $request->all();
         if ($request->file('image') && $request->file('image')->isValid()) {
             $filename = md5(time()) . '.' . $request->file('image')->getClientOriginalExtension();
-            Image::make($request->file('image')->getRealPath())
-                ->resize(500, 330)->save(public_path() . '/files/images/600_' . $filename)
-                ->resize(414, 275)->save(public_path() . '/files/images/500_' . $filename)
-                ->resize(314, 209)->save(public_path() . '/files/images/400_' . $filename)
-                ->resize(282, 167)->save(public_path() . '/files/images/300_' . $filename)
-                ->resize(235, 156)->save(public_path() . '/files/images/200_' . $filename)
-                ->resize(115, 80)->save(public_path() . '/files/images/100_' . $filename);
+            $manager = new ImageManager(array('driver' => 'imagick'));
+            $img = $manager->make($request->file('image')->getRealPath());
+            // resize the image to a width of 300 and constrain aspect ratio (auto height)
+            $img->resize(500, 330)->save(public_path() . '/files/images/600_' . $filename);
+            $img->resize(414, 275)->save(public_path() . '/files/images/500_' . $filename);
+            $img->resize(314, 209)->save(public_path() . '/files/images/400_' . $filename);
+            $img->resize(282, 167)->save(public_path() . '/files/images/300_' . $filename);
+            $img->resize(235, 156)->save(public_path() . '/files/images/200_' . $filename);
+            $img->resize(115, 80)->save(public_path() . '/files/images/100_' . $filename);
             if ($old_image) {
                 @unlink(public_path() . '/files/images/100_' . $old_image);
                 @unlink(public_path() . '/files/images/200_' . $old_image);
