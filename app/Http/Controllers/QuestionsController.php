@@ -112,7 +112,7 @@ class QuestionsController extends Controller {
     {
         $update = $request->all();
         if ($request->file('image') && $request->file('image')->isValid()) {
-            $filename = md5(time()) . '.' . $request->file('image')->guessExtension();
+            $filename = md5(time()) . '.' . $request->file('image')->getClientOriginalExtension();
             Image::make($request->file('image')->getRealPath())
                 ->resize(500, 330)->save(public_path() . '/files/images/600_' . $filename)
                 ->resize(414, 275)->save(public_path() . '/files/images/500_' . $filename)
