@@ -8,9 +8,11 @@
                     <span>Chia sẻ</span>
                 </div>
                 <div class="box-faq">
+                    <?php $i = 0; ?>
                     @foreach ($questions as $question)
+                    <?php $i++; ?>
                     <article class="item">
-                        <div class="number">{{$question->id}}</div>
+                        <div class="number">{{$i}}</div>
                         <div class="content">
                             <a>
                                 <img src="{{url('files/images/200_'. $question->image)}}" width="220" height="130" />
