@@ -1225,7 +1225,7 @@ img {
   color: #ffa300;
 }
 .box-medicine .data .block-m {
-  max-height: 350px;
+  min-height: 315px;
   overflow: hidden;
   margin-bottom: 15px;
 }
