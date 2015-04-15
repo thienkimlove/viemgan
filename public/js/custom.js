@@ -10,10 +10,15 @@ app.controller('RootController', function($scope){
 
 }).controller('PostIndex', function($scope){
     $scope.postTitle = Config.searchPost;
-    $scope.searchPost = function(id, event){
+    $scope.searchPost = function(event, id){
         event.preventDefault();
         if ($scope.postTitle.length > 2) {
-            window.location = Config.baseUrl + '/admin/categories/' + id + '?q=' + encodeURI($scope.postTitle);
+            if (id == undefined) {
+                window.location = Config.baseUrl + '/admin/posts/?q=' + encodeURI($scope.postTitle);
+            } else {
+                window.location = Config.baseUrl + '/admin/categories/' + id + '?q=' + encodeURI($scope.postTitle);
+            }
+
         }
     }
 }).controller('QuestionIndex', function($scope){

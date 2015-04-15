@@ -8,7 +8,7 @@
                 <img src="{{url('files/images/100_' . $post->image)}}" width="115" height="80" alt="">
             </a>
             <div class="intro-product">
-                <div class="title-p">{{str_limit($post->title, 40)}}</div>
+                <div class="title-p"><a href="{{url($post->slug . '.html')}}">{{str_limit($post->title, 40)}}</a></div>
                 <p>
                     <span class="rate">Đánh giá</span>
                     <span>{{$post->likes}} lượt thích</span>

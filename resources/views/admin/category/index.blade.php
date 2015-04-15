@@ -23,7 +23,11 @@
                             @foreach($categories as $cat)
                             <tr>
                                 <td>{{$cat->id}}</td>
+                                @if ($cat->display_homepage_0)
                                 <td>{{$cat->name}}</td>
+                                @else
+                                    <td><a href="{{url('admin/categories/'. $cat->id)}}">{{$cat->name}}</a></td>
+                                @endif
                                 <td>{{ ($cat->parent_id) ? 'Con' : 'Cha'}}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-ng-click="goUrl('/categories/{{$cat->id}}/edit')" type="button">Edit</button>&nbsp;

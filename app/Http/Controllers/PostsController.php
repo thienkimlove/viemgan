@@ -19,10 +19,16 @@ class PostsController extends Controller {
         $this->middleware('admin');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::where('display_homepage_0', false)->get();
-        return view('admin.post.index', compact('categories'));
+        if ($request->input('q')) {
+            $searchPost = urldecode($request->input('q'));
+            $posts = Post::where('title', 'LIKE', '%'.$searchPost.'%')->latest()->paginate(10);
+        } else {
+            $posts = Post::latest()->paginate(10);
+            $searchPost = '';
+        }
+        return view('admin.post.index', compact('posts', 'searchPost'));
     }
 
     public function create()
