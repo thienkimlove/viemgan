@@ -34,7 +34,7 @@
         </div>
         <div class="box-best-product cf">
             <h3 class="title">
-                <span><a href="{{url('chuyen-muc', $top1Block['category']->slug)}}">{{$top1Block['category']->name}}</a></span>
+                <a href="{{url('chuyen-muc', $top1Block['category']->slug)}}"><span>{{$top1Block['category']->name}}</span></a>
             </h3>
             <div class="list-product">
                 @foreach ($top1Block['posts'] as $post)
@@ -47,7 +47,7 @@
         </div>
         <div class="box-medicine cf">
             <h3 class="title">
-                <span><a href="{{url('chuyen-muc', $top2Block['category']->slug)}}">{{$top2Block['category']->name}}</a></span>
+                <a href="{{url('chuyen-muc', $top2Block['category']->slug)}}"><span>{{$top2Block['category']->name}}</span></a>
             </h3>
 
             <div class="data">

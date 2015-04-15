@@ -3,7 +3,7 @@
     <div class="data">
         <div class="item">
             <div class="title">
-                <span>{{$cate->name}}</span>
+                <a href="{{url('chuyen-muc', $cate->slug)}}"><span>{{$cate->name}}</span></a>
             </div>
             @foreach($cate->latestThreePosts as $post)
             <div class="list-medicine">
