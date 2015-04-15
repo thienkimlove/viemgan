@@ -1,47 +1,37 @@
 <div class="menu-left" id="menu-left">
     <div class="inner">
         <a href="javascript:void(0)" title="Menu" class="btn-menu" id="btn-menu">Menu</a>
-        <div class="search">
-            <div class="search-in">
-                <form>
-                    <input type="text" name="keyword" class="txt" placeholder="Từ khóa tìm kiếm"/>
-                    <input type="submit" name="submit" class="btn-find" value=""/>
-                </form>
-            </div>
-        </div>
         <nav>
             <ul class="nav-mobile">
                 <li>
-                    <a class="active" href="trang-chu.html" title="">TRANG CHỦ</a>
+                    <a class="{{ (!empty($page) && $page == 'index') ?  'active' : '' }}" href="{{url('/')}}" title="">
+                        <span>HOME</span>
+                    </a>
                     <ul>
-                        <li class="has-sub active">
-                            <a href="" title="">Các bệnh về gan</a>
-                            <ul>
-                                <li>
-                                    <a href="" title="">Bệnh 1</a>
-                                </li>
-                                <li>
-                                    <a href="" title="">Bệnh 2</a>
-                                </li>
-                                <li>
-                                    <a href="" title="">Bệnh 2</a>
-                                </li>
-                            </ul>
+                        @foreach ($categories as $cate)
+                            @if ($cate->subCategories->count() > 0)
+
+                            <li class="{{(!empty($page) && ($page == $cate->id | in_array($page, $cate->subCategories->lists('id')))) ? 'has-sub active' : 'has-sub'}}">
+                            @else
+                                <li class="{{(!empty($page) && ($page == $cate->id | in_array($page, $cate->subCategories->lists('id')))) ? 'active' : ''}}">
+                            @endif
+                                <a  href="{{($cate->subCategories->count() == 0) ? url('chuyen-muc', $cate->slug) : ''}}" title=""><span>{{$cate->name}}</span></a>
+                                @if ($cate->subCategories->count() > 0)
+                                    <ul>
+                                        @foreach ($cate->subCategories as $sub)
+                                            <li>
+                                                <a href="{{url('chuyen-muc', $sub->slug)}}" title="{{$sub->name}}"><span>{{$sub->name}}</span></a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                        <li class="{{ (!empty($page) && $page == 'faq') ? 'active' : '' }} ">
+                            <a  href="{{url('hoi-dap')}}" title=""><span>Hỏi đáp</span></a>
                         </li>
-                        <li>
-                            <a href="" title="">Dược liệu với bệnh gan</a>
-                        </li>
-                        <li>
-                            <a href="" title="">Sản phẩm tốt cho gan</a>
-                        </li>
-                        <li>
-                            <a href="" title="">Chia sẻ</a>
-                        </li>
-                        <li>
-                            <a href="" title="">Hỏi đáp</a>
-                        </li>
-                        <li>
-                            <a href="" title="">Liên hệ</a>
+                        <li class="{{ (!empty($page) && $page == 'contact') ? 'active' : '' }}">
+                            <a  href="{{url('lien-he')}}" title=""><span>Liên hệ</span></a>
                         </li>
                     </ul>
                 </li>

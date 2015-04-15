@@ -6,7 +6,7 @@
         <div class="col-left">
             <div class="box-medicine cf">
                 <h3 class="title">
-                    <span>Viêm Gan Virus</span>
+                    <span><a href="{{url('chuyen-muc', $category->slug)}}">{{$category->name}}</a></span>
                 </h3>
                 @foreach ($posts as $post)
                 <div class="data">

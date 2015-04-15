@@ -16,7 +16,17 @@ class Category extends Model implements SluggableInterface {
         'save_to'    => 'slug',
     );
 
-	protected $fillable = ['name', 'parent_id', 'template', 'slug'];
+	protected $fillable = [
+        'name',
+        'parent_id',
+        'template',
+        'slug',
+        'display_below',
+        'display_homepage_0',
+        'display_homepage_1',
+        'display_homepage_2',
+        'display_homepage_3'
+    ];
 
 
     protected $appends = ['sub_count'];
@@ -72,12 +82,4 @@ class Category extends Model implements SluggableInterface {
         return $this->hasMany('App\Post')->latest()->limit(3);
     }
 
-    /**
-     * three post in homepage.
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function homePageLatestSixPosts()
-    {
-        return $this->hasMany('App\Post')->hot(true)->limit(6);
-    }
 }

@@ -28,6 +28,11 @@
     {!! Form::checkbox('right', null, null) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('right_block', 'Make post display in "Binh chon san pham"') !!}
+    {!! Form::checkbox('right_block', null, null) !!}
+</div>
+
 
 <div class="form-group">
      {!! Form::label('desc', 'Description') !!}

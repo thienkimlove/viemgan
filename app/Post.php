@@ -17,7 +17,20 @@ class Post extends Model implements SluggableInterface {
     );
 
 
-    protected $fillable = ['title', 'desc', 'content', 'image', 'category_id', 'status', 'hot', 'right', 'views', 'likes', 'slug'];
+    protected $fillable = [
+        'title',
+        'desc',
+        'content',
+        'image',
+        'category_id',
+        'status',
+        'hot',
+        'right',
+        'views',
+        'likes',
+        'slug',
+        'right_block'
+    ];
 
     /**
      * When title change then slug will change.

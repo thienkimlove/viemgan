@@ -5,7 +5,7 @@
         <div class="col-left">
             <div class="title">
                 <div class="i-product fl"></div>
-                <span class="product">{{$category->name}}</span>
+                <span class="product"><a href="{{url('chuyen-muc', $category->slug)}}">{{$category->name}}</a></span>
             </div>
            @include('frontend.list', ['posts' => $posts])
 

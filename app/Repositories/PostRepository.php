@@ -32,9 +32,11 @@ class PostRepository extends BaseRepository
             'image' => ($request->file('image') && $request->file('image')->isValid()) ? $this->saveImage($request) : '',
             'category_id' => $request->input('category_id'),
             'right' => ($request->input('right') == 'on') ? true : false,
+            'right_block' => ($request->input('right_block') == 'on') ? true : false,
             'hot' => ($request->input('hot') == 'on') ? true : false
         ]);
         $this->syncTags($post, $request);
+        return $post;
     }
 
 
@@ -58,12 +60,15 @@ class PostRepository extends BaseRepository
 
         $update['hot'] = (!empty($update['hot']) && $update['hot'] == 'on') ? true : false;
         $update['right'] = (!empty($update['right']) && $update['right'] == 'on') ? true : false;
+        $update['right_block'] = (!empty($update['right_block']) && $update['right_block'] == 'on') ? true : false;
 
         if ($request->file('image') && $request->file('image')->isValid()) {
             $update['image'] = $this->saveImage($request, $post->image);
         }
         $post->update($update);
         $this->syncTags($post, $request);
+
+        return $post;
     }
 
     protected function syncTags(Post $post, $request)

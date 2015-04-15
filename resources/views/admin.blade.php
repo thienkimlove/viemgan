@@ -13,7 +13,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{ url('/css/admin.css') }}" rel="stylesheet" type="text/css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ url('/css/select2.min.css')}}" rel="stylesheet" />
 
 
 </head>
@@ -40,7 +40,7 @@
 <script src="{{url('/js/admin.js')}}"></script>
 <script src="{{url('/js/libs/ckeditor/ckeditor.js')}}"></script>
 <script src="{{url('/js/custom.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
+<script src="{{url('/js/select2.min.js')}}"></script>
 @yield('footer')
 </body>
 

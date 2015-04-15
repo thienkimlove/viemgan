@@ -17,15 +17,36 @@ class MainController extends Controller
     public function index()
     {
         $page = 'index';
+
         $latestPost = Post::hot(true)->latest()->take(5)->get();
-        $cateIds = Category::where('parent_id', 1)->lists('id');
-        $rootCategoryLatest = Post::hot(true)->whereIn('category_id', $cateIds)->latest()->take(5)->get();
+        $categories = Category::latest()->get();
 
-        $top2 = Post::hot(true)->where('category_id', 9)->latest()->take(6)->get();
-        $top3 = Post::hot(true)->where('category_id', 3)->latest()->take(8)->get();
-        $subData = Category::where('id', 2)->first();
+        $rootBlock = [];
+        $top1Block = [];
+        $top2Block = [];
 
-        return view('frontend.index', compact('page', 'latestPost', 'rootCategoryLatest', 'top2', 'top3', 'subData'))->with([
+
+        foreach ($categories as $category) {
+            if ($category->display_homepage_0) {
+                $rootBlock['category'] = $category;
+                $cateIds = Category::where('parent_id', $category->id)->lists('id');
+                $rootBlock['posts'] = Post::hot(true)->whereIn('category_id', $cateIds)->latest()->take(5)->get();
+            }
+            if ($category->display_homepage_1) {
+                $top1Block['category'] = $category;
+                $top1Block['posts'] = Post::hot(true)->where('category_id', $category->id)->latest()->take(6)->get();
+            }
+            /*if ($category->display_homepage_2) {
+                $top2Block['category'] = $category;
+                $top2Block['posts'] = Post::hot(true)->where('category_id', $category->id)->latest()->take(6)->get();
+            }*/
+            if ($category->display_homepage_2) {
+                $top2Block['category'] = $category;
+                $top2Block['posts'] = Post::hot(true)->where('category_id', $category->id)->latest()->take(6)->get();
+
+            }
+        }
+        return view('frontend.index', compact('page', 'latestPost', 'rootBlock', 'top1Block', 'top2Block'))->with([
             'meta_title' => ' Trang chủ Viemgan.com.vn ',
             'meta_desc' => '',
             'meta_keywords' => '',
@@ -39,7 +60,7 @@ class MainController extends Controller
         $latestPost = null;
         //viemgan virus.
         if ($category->template == 1 | $category->template == 2) {
-            $latestPost = Post::where('category_id', 4)->latest()->take(5)->get();
+            $latestPost = Post::where('category_id', $category->id)->latest()->take(5)->get();
             $posts = Post::where('category_id', $category->id)->latest()->skip(4)->paginate(10);
             $view = 'frontend.virus';
         }  else {

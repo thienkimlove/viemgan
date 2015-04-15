@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -18,16 +19,10 @@ class PostsController extends Controller {
         $this->middleware('admin');
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        if (!empty($request->input('q'))) {
-            $searchPost = urldecode($request->input('q'));
-            $posts = Post::where('title', 'LIKE', '%'.$searchPost.'%')->latest()->paginate(10);
-        } else {
-            $posts = Post::latest()->paginate(10);
-            $searchPost = '';
-        }
-        return view('admin.post.index', compact('posts', 'searchPost'));
+        $categories = Category::where('display_homepage_0', false)->get();
+        return view('admin.post.index', compact('categories'));
     }
 
     public function create()
@@ -37,9 +32,9 @@ class PostsController extends Controller {
 
     public function store(PostRequest $request)
     {
-        $this->postRepository->store($request);
+        $post = $this->postRepository->store($request);
         flash('Create post success!', 'success');
-        return redirect('admin/posts');
+        return redirect('admin/categories/' . $post->category_id);
     }
 
     /**
@@ -55,9 +50,9 @@ class PostsController extends Controller {
 
     public function update($id, PostRequest $request)
     {
-        $this->postRepository->update($request, $id);
+       $post = $this->postRepository->update($request, $id);
         flash('Update post success!', 'success');
-        return redirect('admin/posts');
+        return redirect('admin/categories/' . $post->category_id);
     }
 
 

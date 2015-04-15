@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CategoryRequest;
+use App\Post;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
@@ -39,6 +40,18 @@ class CategoriesController extends Controller
         $this->categoryRepository->store($request->all());
         flash('Create category success!', 'success');
         return redirect('admin/categories');
+    }
+    public function show($id, Request $request)
+    {
+        $category = Category::findOrFail($id);
+        if ($request->input('q')) {
+            $searchPost = urldecode($request->input('q'));
+            $posts = Post::where('title', 'LIKE', '%'.$searchPost.'%')->where('category_id', $category->id)->latest()->paginate(10);
+        } else {
+            $posts = Post::where('category_id', $category->id)->latest()->paginate(10);
+            $searchPost = '';
+        }
+        return view('admin.category.show', compact('posts', 'searchPost', 'category'));
     }
 
 

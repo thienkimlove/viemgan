@@ -46,9 +46,11 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+
                 <li>
                     <a><i class="fa fa-files-o fa-fw"></i>Posts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+
                         <li>
                             <a href="{{url('admin/posts')}}">List Posts</a>
                         </li>

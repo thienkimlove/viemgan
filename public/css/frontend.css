@@ -2745,6 +2745,7 @@ img {
 
   .box-medicine .data .item {
     width: 48%;
+    margin-right: 0;
   }
 }
 @-ms-viewport {
@@ -2934,7 +2935,7 @@ img {
     margin-top: 20px;
   }
 
-  .nav-menu, .box-banner .cover img, .nav-main, .box-ad, .box-project .project .info {
+  .nav-menu, .box-banner .cover img, .nav-main, .box-project .project .info {
     display: none;
   }
 
@@ -2980,7 +2981,7 @@ img {
     float: left;
   }
 
-  .box-adv, .box-mix .item.item-4, .header-mid .box-find {
+  .box-mix .item.item-4, .header-mid .box-find {
     display: none;
   }
 
@@ -3027,6 +3028,10 @@ img {
   @-ms-viewport {
     width: 320px;
   }
+  .header-mid .slogan {
+    display: none;
+  }
+
   .box-media .item, .box-mix .item.item-3, .box-mix .item.item-4, .box-copyright .copyright {
     clear: both;
     width: 100%;
@@ -3104,8 +3109,20 @@ img {
     max-width: 160px;
   }
 
+  .box-article .item a {
+    display: block;
+    text-align: center;
+  }
+
+  .box-article .item h3 a {
+    text-align: left;
+  }
+
   .box-article .item img {
-    max-width: 110px;
+    max-width: 100%;
+    height: auto;
+    margin-right: 0;
+    float: none;
   }
 
   .box-detail .product .info, .main-content .col-left .news-list .item {

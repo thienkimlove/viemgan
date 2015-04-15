@@ -31,7 +31,12 @@ class CategoryRepository extends BaseRepository
         $this->model->create([
             'name' => $request['name'],
             'parent_id' => ($request['parent_id'] == 0) ? null : $request['parent_id'],
-            'template' => $request['template']
+            'template' => $request['template'],
+            'display_below' => (!empty($request['display_below']) && $request['display_below'] == 'on') ? true : false,
+            'display_homepage_0' => (!empty($request['display_homepage_0']) && $request['display_homepage_0'] == 'on') ? true : false,
+            'display_homepage_1' => (!empty($request['display_homepage_1']) && $request['display_homepage_1'] == 'on') ? true : false,
+            'display_homepage_2' => (!empty($request['display_homepage_2']) && $request['display_homepage_2'] == 'on') ? true : false,
+            'display_homepage_3' => (!empty($request['display_homepage_3']) && $request['display_homepage_3'] == 'on') ? true : false,
         ]);
     }
 
@@ -64,7 +69,12 @@ class CategoryRepository extends BaseRepository
         $category->update([
             'name' => $request['name'],
             'parent_id' => ($request['parent_id'] == 0) ? null : $request['parent_id'],
-            'template' => $request['template']
+            'template' => $request['template'],
+            'display_below' => (!empty($request['display_below']) && $request['display_below'] == 'on') ? true : false,
+            'display_homepage_0' => (!empty($request['display_homepage_0']) && $request['display_homepage_0'] == 'on') ? true : false,
+            'display_homepage_1' => (!empty($request['display_homepage_1']) && $request['display_homepage_1'] == 'on') ? true : false,
+            'display_homepage_2' => (!empty($request['display_homepage_2']) && $request['display_homepage_2'] == 'on') ? true : false,
+            'display_homepage_3' => (!empty($request['display_homepage_3']) && $request['display_homepage_3'] == 'on') ? true : false,
         ]);
 
     }

@@ -9,6 +9,27 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('display_homepage_0', 'Is Root?') !!}
+    {!! Form::checkbox('display_homepage_0', null, null) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('display_homepage_1', '1st block at homepage') !!}
+    {!! Form::checkbox('display_homepage_1', null, null) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('display_homepage_2', '2nd block at homepage') !!}
+    {!! Form::checkbox('display_homepage_2', null, null) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('display_below', 'Bottom Block') !!}
+    {!! Form::checkbox('display_below', null, null) !!}
+</div>
+
+
+<div class="form-group">
     {!! Form::label('template', 'Choose layout template') !!}
     {!! Form::select('template', $layout, null, ['class' => 'form-control']) !!}
 </div>
