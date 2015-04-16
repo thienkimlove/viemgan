@@ -8,14 +8,8 @@
                 <a href="{{url('chuyen-muc', $category->slug)}}"><span class="product">{{$category->name}}</span></a>
             </div>
            @include('frontend.list', ['posts' => $posts])
-
-            <div class="box-ad">
-                <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
-            </div>
-            @include('frontend.below')
-            <div class="box-ad">
-                <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
-            </div>
+           @include('frontend.adblock')
+           @include('frontend.below')
             <div class="clear"></div>
         </div><!--//col-left-->
         @include('frontend.right')

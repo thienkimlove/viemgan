@@ -29,9 +29,7 @@
             </div>
 
         </div>
-        <div class="box-ad">
-            <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
-        </div>
+        @include('frontend.adblock')
         <div class="box-best-product cf">
             <h3 class="title">
                 <a href="{{url('chuyen-muc', $top1Block['category']->slug)}}"><span>{{$top1Block['category']->name}}</span></a>
@@ -124,9 +122,6 @@
                 </div>
             </div>
 
-        </div>
-        <div class="box-ad">
-            <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
         </div>
         <div class="clear"></div>
     </div><!--//col-left-->

@@ -27,9 +27,7 @@
                 {!! with(new \App\Pagination\AcmesPresenter($posts))->render() !!}
                 <div class="clear"></div>
             </div>
-            <div class="box-ad">
-                <a href="#"><img src="{{url('images/adv.jpg')}}" alt=""></a>
-            </div>
+            @include('frontend.adblock')
             <div class="clear"></div>
         </div><!--//col-left-->
         @include('frontend.right')

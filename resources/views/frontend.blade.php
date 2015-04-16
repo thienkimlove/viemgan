@@ -49,12 +49,14 @@
     <div class="overlay" id="overlay"></div>
     @include('frontend.left_menu')
 </div>
+
 <script>
     var Config = {};
     Config.url = '{{ url('/') }}';
 </script>
 <script type="text/javascript" src="{{url('/js/frontend.js')}}"></script>
 <script type="text/javascript" src="{{url('/js/frontend-custom.js')}}"></script>
+@include('frontend.outside')
 @yield('footer')
 </body>
 </html>
