@@ -2159,6 +2159,10 @@ img {
   margin: 0 0 14px 1.875%;
   position: relative;
 }
+.sub-news .data .item img {
+  width: 235px;
+  height: 139px;
+}
 .sub-news .data .item img:hover {
   border-color: #ffa300;
 }
@@ -3250,6 +3254,11 @@ img {
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
   .menu-left, .header-bot .option-menu {
     display: block;
   }
