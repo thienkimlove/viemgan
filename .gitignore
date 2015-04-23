@@ -3,3 +3,4 @@
 .idea/
 /public/files/images/*
 /public/js/libs/kcfinder/upload/*
+!/public/files/images/default.jpg
