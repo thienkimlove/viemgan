@@ -2,7 +2,7 @@
 @section('content')
     @include('admin.post.heading')
     <div class="row" data-ng-controller="PostIndex">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="input-group custom-search-form">
@@ -27,6 +27,7 @@
                                 <th>Category</th>
                                 <th>Nổi bật</th>
                                 <th>Cột phải</th>
+                                <th>Published?</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -40,7 +41,7 @@
                                     <td>{{$post->category->name}}</td>
                                     <td>{{($post->hot) ? 'Yes' : 'No'}}</td>
                                     <td>{{($post->right) ? 'Yes' : 'No'}}</td>
-
+                                    <td>{{($post->status) ? 'Yes' : 'No'}}</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm" data-ng-click="goUrl('/posts/{{$post->id}}/edit')" type="button">Edit</button>&nbsp;
                                         <button class="btn btn-primary btn-sm" type="button">Delete</button>

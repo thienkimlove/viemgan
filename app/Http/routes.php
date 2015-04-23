@@ -28,9 +28,9 @@ Route::get('search/{tag}', function($tag) {
         $keyword = $matches[1];
         $keyword = str_replace('-',' ', $keyword);
         if (strlen($keyword) > 2) {
-            $posts = Post::tagged($keyword)->latest()->paginate(20);
+            $posts = Post::where('status', true)->tagged($keyword)->latest()->paginate(20);
         } else {
-            $posts = Post::latest()->paginate(20);
+            $posts = Post::where('status', true)->latest()->paginate(20);
         }
         return view('frontend.search', compact('posts', 'keyword'))->with([
             'meta_title' => ' Kết quả tìm kiếm từ khóa '.$keyword.' tại Viemgan.com.vn ',

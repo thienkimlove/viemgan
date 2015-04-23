@@ -41,7 +41,7 @@ class Tag extends Model implements  SluggableInterface {
      */
     public function posts()
     {
-        return $this->belongsToMany('App\Post')->latest()->paginate(10);
+        return $this->belongsToMany('App\Post')->where('status', true)->latest()->paginate(10);
     }
 
 }

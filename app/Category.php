@@ -70,7 +70,7 @@ class Category extends Model implements SluggableInterface {
      */
     public function posts()
     {
-       return $this->hasMany('App\Post');
+       return $this->hasMany('App\Post')->where('status', true);
     }
 
     /**
@@ -79,7 +79,7 @@ class Category extends Model implements SluggableInterface {
      */
     public function latestThreePosts()
     {
-        return $this->hasMany('App\Post')->latest()->limit(3);
+        return $this->hasMany('App\Post')->where('status', true)->latest()->limit(3);
     }
 
 }
