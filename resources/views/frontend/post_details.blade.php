@@ -39,7 +39,6 @@
             <div class="fb-comments" data-href="{{url($post->slug.'.html')}}" data-numposts="5" data-colorscheme="light"></div>
             <div class="clear"></div>
         </div><!--//box-form-->
-        @include('frontend.adblock')
         @include('frontend.below')
         <div class="clear"></div>
     </div><!--//col-left-->

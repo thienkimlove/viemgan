@@ -35,7 +35,6 @@
                     {!! with(new \App\Pagination\AcmesPresenter($questions))->render() !!}
                     <div class="clear"></div>
                 </div>
-                @include('frontend.adblock')
                 @include('frontend.below')
                 <div class="clear"></div>
             </div><!--//col-left-->

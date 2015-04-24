@@ -1,8 +1,10 @@
 <?php namespace App\Providers;
 
+use App\Banner;
 use App\Category;
 use App\Post;
 use App\Question;
+use App\Video;
 use Illuminate\Support\ServiceProvider;
 
 class ViewComposerProvider extends ServiceProvider {
@@ -14,8 +16,11 @@ class ViewComposerProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
+
+
         view()->composer('frontend', function ($view) {
              $view->with('categories', Category::where('parent_id', null)->get());
+
         });
         view()->composer('frontend.most_read_special', function ($view) {
             $view->with('mostReads', Post::where('status', true)->hot()->latest()->take(7)->get());
@@ -36,6 +41,16 @@ class ViewComposerProvider extends ServiceProvider {
         view()->composer('frontend.below', function($view){
             $view->with('staticSub', Category::where('display_below', true)->get());
         });
+
+        view()->composer('frontend.right', function($view){
+            $view->with('video', Video::latest()->first());
+        });
+
+        view()->composer('frontend.banner', function ($view) {
+            $view->with('displayBanners', Banner::latest()->get());
+
+        });
+
 
 
 	}

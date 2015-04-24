@@ -1,3 +1,4 @@
+@include('frontend.banner', ['bannerPosition' => 4])
 <div class="box-medicine cf">
     @foreach ($staticSub as $cate)
     <div class="data">
@@ -20,3 +21,4 @@
     </div>
     @endforeach
 </div>
+@include('frontend.banner', ['bannerPosition' => 5])

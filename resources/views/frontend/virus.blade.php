@@ -27,7 +27,7 @@
                 {!! with(new \App\Pagination\AcmesPresenter($posts))->render() !!}
                 <div class="clear"></div>
             </div>
-            @include('frontend.adblock')
+            @include('frontend.banner', ['bannerPosition' => 4])
             <div class="clear"></div>
         </div><!--//col-left-->
         @include('frontend.right')

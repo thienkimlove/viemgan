@@ -41,7 +41,8 @@ Route::get('search/{tag}', function($tag) {
 });
 
 
-
+Route::resource('admin/banners', 'BannersController');
+Route::resource('admin/videos', 'VideosController');
 Route::resource('admin/categories', 'CategoriesController');
 Route::resource('admin/posts', 'PostsController');
 Route::resource('admin/questions', 'QuestionsController');

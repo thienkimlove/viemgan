@@ -8,7 +8,6 @@
             </div>
 
             @include('frontend.list', ['posts' => $posts])
-            @include('frontend.adblock')
             @include('frontend.below')
             <div class="clear"></div>
         </div><!--//col-left-->

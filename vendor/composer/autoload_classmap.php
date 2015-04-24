@@ -6,11 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddFieldsToBanners' => $baseDir . '/database/migrations/2015_04_24_075103_add_fields_to_banners.php',
     'AddFieldsToCategories' => $baseDir . '/database/migrations/2015_04_15_023510_add_fields_to_categories.php',
     'AddImageToQuestions' => $baseDir . '/database/migrations/2015_04_07_040153_add_image_to_questions.php',
     'AddMoreFieldsToCategories' => $baseDir . '/database/migrations/2015_04_15_025301_add_more_fields_to_categories.php',
     'AddRightBlockToPosts' => $baseDir . '/database/migrations/2015_04_15_024239_add_right_block_to_posts.php',
     'ClearSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'CreateBannersTable' => $baseDir . '/database/migrations/2015_04_24_025829_create_banners_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2015_03_17_015739_create_categories_table.php',
     'CreateContactsTable' => $baseDir . '/database/migrations/2015_03_31_093809_create_contacts_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
@@ -18,6 +20,7 @@ return array(
     'CreateQuestionsTable' => $baseDir . '/database/migrations/2015_03_31_082046_create_questions_table.php',
     'CreateTagsTable' => $baseDir . '/database/migrations/2015_03_30_013913_create_tags_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CreateVideosTable' => $baseDir . '/database/migrations/2015_04_24_025841_create_videos_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/File/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/File/Iterator/Facade.php',

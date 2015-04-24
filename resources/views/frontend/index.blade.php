@@ -29,7 +29,7 @@
             </div>
 
         </div>
-        @include('frontend.adblock')
+        @include('frontend.banner', ['bannerPosition' => 1])
         <div class="box-best-product cf">
             <h3 class="title">
                 <a href="{{url('chuyen-muc', $top1Block['category']->slug)}}"><span>{{$top1Block['category']->name}}</span></a>
@@ -85,6 +85,7 @@
                 </div>
             </div>
 
+
             <div class="data">
                 <div class="item">
                     @if ($column = $top2Block['posts']->slice(3, 3))
@@ -123,6 +124,7 @@
             </div>
 
         </div>
+        @include('frontend.banner', ['bannerPosition' => 2])
         <div class="clear"></div>
     </div><!--//col-left-->
     @include('frontend.right')
