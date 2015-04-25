@@ -31,7 +31,7 @@ class ViewComposerProvider extends ServiceProvider {
         });
 
         view()->composer('frontend.most_rates', function ($view) {
-            $view->with('bestRates', Post::where('status', true)->hot('right_block', true)->take(4)->get());
+            $view->with('bestRates', Post::where('status', true)->where('right_block', true)->take(4)->get());
         });
 
         view()->composer('frontend.most_question', function ($view) {
