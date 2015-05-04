@@ -14,7 +14,7 @@
 use App\Post;
 
 Route::get('/', 'MainController@index');
-Route::get('fix', 'MainController@fix');
+//Route::get('fix', 'MainController@fix');
 Route::get('/hoi-dap', 'MainController@faq');
 Route::get('/lien-he', 'MainController@contact');
 Route::get('admin', 'AdminController@index');
