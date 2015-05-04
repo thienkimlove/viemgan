@@ -45,7 +45,10 @@
 
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-ng-click="goUrl('/posts/{{$post->id}}/edit')" type="button">Edit</button>&nbsp;
-                                    <button class="btn btn-primary btn-sm" type="button">Delete</button>
+                                    <br>
+                                    {!! Form::open(['method' => 'DELETE', 'route' => ['admin.posts.destroy', $post->id]]) !!}
+                                    <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                             @endforeach

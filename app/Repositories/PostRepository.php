@@ -74,6 +74,16 @@ class PostRepository extends BaseRepository
         return $post;
     }
 
+    /**
+     * delete post
+     * @param $id
+     */
+    public function delete($id)
+    {
+        $post = $this->getById($id);
+        $post->delete();
+    }
+
     protected function syncTags(Post $post, $request)
     {
         $tagIds = [];

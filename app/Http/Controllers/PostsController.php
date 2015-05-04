@@ -61,5 +61,12 @@ class PostsController extends Controller {
         return redirect('admin/categories/' . $post->category_id);
     }
 
+    public function destroy($id)
+    {
+        $this->postRepository->delete($id);
+        flash('Success deleted post!');
+        return redirect('admin/posts');
+    }
+
 
 }
