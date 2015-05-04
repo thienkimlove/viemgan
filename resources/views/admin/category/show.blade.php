@@ -37,7 +37,7 @@
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->desc}}</td>
-                                <td><img src="{{url('/files/images/100_' . $post->image)}}" /></td>
+                                <td> <img src="{{url('image-cached/size1/' .$post->image)}}" /> </td>
                                 <td>{{$post->category->name}}</td>
                                 <td>{{($post->hot) ? 'Yes' : 'No'}}</td>
                                 <td>{{($post->right) ? 'Yes' : 'No'}}</td>

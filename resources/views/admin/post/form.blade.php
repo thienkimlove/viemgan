@@ -6,7 +6,7 @@
 <div class="form-group">
     {!! Form::label('image', 'Image') !!}
     @if ($post->image)
-        <img src="{{url('files/images/100_' .$post->image)}}" />
+        <img src="{{url('image-cached/size1/' .$post->image)}}" />
         <hr>
     @endif
     {!! Form::file('image', null, ['class' => 'form-control']) !!}

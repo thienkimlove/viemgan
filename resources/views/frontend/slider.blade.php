@@ -6,7 +6,7 @@
         <div class="owl-carousel" id="slide-company">
             <div class="item">
                 <a href="{{url($post->slug.'.html')}}" title="" class="thumb-img">
-                    <img src="{{url('files/images/200_'.$post->image)}}" width="220" height="130" alt=""/>
+                    <img src="{{url('image-cached/size4/' .$post->image)}}" />
                 </a>
                 <h3>
                     <a href="{{url($post->slug.'.html')}}" title="">{{$post->title}}</a>
