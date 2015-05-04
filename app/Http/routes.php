@@ -45,7 +45,13 @@ Route::get('search/{tag}', function($tag) {
 
 Route::get('render', function () {
 
-    $image = Image::make(public_path() . '/files/images/600_' . Request::input('p'));
+    if (file_exists(public_path() . '/files/images/' . Request::input('p'))) {
+        $image = Image::make(public_path() . '/files/images/' . Request::input('p'));
+    } else {
+        $image = Image::make(public_path() . '/files/images/600_' . Request::input('p'));
+    }
+
+
 
     if (Request::input('w') && Request::input('h')) {
         $image->fit(Request::input('w'), Request::input('h'));

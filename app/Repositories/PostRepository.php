@@ -95,6 +95,7 @@ class PostRepository extends BaseRepository
         $manager = new ImageManager(array('driver' => 'imagick'));
         $img = $manager->make($request->file('image')->getRealPath());
         // resize the image to a width of 300 and constrain aspect ratio (auto height)
+        $img->save(public_path() . '/files/images/' . $filename);
         $img->resize(500, 330)->save(public_path() . '/files/images/600_' . $filename);
         $img->resize(414, 275)->save(public_path() . '/files/images/500_' . $filename);
         $img->resize(314, 209)->save(public_path() . '/files/images/400_' . $filename);
@@ -110,6 +111,7 @@ class PostRepository extends BaseRepository
             ->resize(235, 156)->save(public_path() . '/files/images/200_' . $filename)
             ->resize(115, 80)->save(public_path() . '/files/images/100_' . $filename);*/
         if ($old) {
+            @unlink(public_path() . '/files/images/' . $filename);
             @unlink(public_path() . '/files/images/100_' . $old);
             @unlink(public_path() . '/files/images/200_' . $old);
             @unlink(public_path() . '/files/images/300_' . $old);
