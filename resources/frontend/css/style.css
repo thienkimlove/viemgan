@@ -1537,10 +1537,12 @@ img {
 }
 
 #accordion {
-  margin-left: 40px;
+  float: left;
+  width: 100%;
 }
 #accordion .answer {
   font-weight: bold;
+  padding-left: 40px;
 }
 
 .box-faq {
@@ -1556,8 +1558,12 @@ img {
   content: "";
   clear: left;
 }
+.box-faq .item > a {
+  float: left;
+  margin-right: 10px;
+}
 .box-faq .item .content {
-  padding-left: 38px;
+  padding-left: 40px;
   margin-bottom: 10px;
 }
 .box-faq .item .human {
