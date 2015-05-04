@@ -11,7 +11,7 @@
             @if ($first = $rootBlock['posts']->shift())
             <article class="item-summary">
                 <a href="{{url($first->slug.'.html')}}" title="" class="thumb-img">
-                    <img src="{{url('files/images/400_'.$first->image)}}" alt=""/>
+                    <img src="{{url('render/?p=' . $first->image . '&w=314&h=209')}}" />
                 </a>
                 <h3>{{str_limit($first->title, 50)}}</h3>
                 <p>{{str_limit($first->desc, 150)}}</p>
@@ -21,7 +21,7 @@
                 @foreach($rootBlock['posts'] as $post)
                 <article class="block">
                     <a href="{{$post->slug.'.html'}}" class="thumb">
-                        <img src="{{url('files/images/100_'.$post->image)}}" width="115" height="80" alt="">
+                        <img src="{{url('render/?p=' . $post->image . '&w=115&h=80')}}" />
                     </a>
                     <h3><a href="{{$post->slug.'.html'}}">{{str_limit($post->title, 50)}}</a></h3>
                 </article>
@@ -37,7 +37,10 @@
             <div class="list-product">
                 @foreach ($top1Block['posts'] as $post)
                 <article class="item">
-                    <a href="{{url($post->slug.'.html')}}" class="thumb-img"><img src="{{url('files/images/200_'.$post->image)}}" alt="" width="235" height="156"></a>
+                    <a href="{{url($post->slug.'.html')}}" class="thumb-img">
+                        <img src="{{url('render/?p=' . $post->image . '&w=235&h=156')}}" />
+                    </a>
+
                     <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
                 </article>
                 @endforeach
@@ -54,7 +57,7 @@
                         @if ($first = $column->shift())
                             <div class="block-m">
                                 <a href="{{url($first->slug.'.html')}}" class="thumb-img">
-                                    <img src="{{url('files/images/400_'.$first->image)}}" alt="">
+                                    <img src="{{url('render/?p=' . $first->image . '&w=314&h=209')}}" />
                                 </a>
                                 <h3>
                                     <a href="{{url($first->slug.'.html')}}" class="thumb">{{str_limit($first->title, 50)}}</a>
@@ -67,7 +70,7 @@
                         @foreach ($column as $post)
                                 <div class="list-medicine">
                                     <a href="{{url($post->slug.'.html')}}" class="thumb">
-                                        <img src="{{url('files/images/100_'.$post->image)}}" width="115" height="80" alt="">
+                                        <img src="{{url('render/?p=' . $post->image . '&w=115&h=80')}}" />
                                     </a>
                                     <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
                                     <div class="view fl">
@@ -92,7 +95,7 @@
                         @if ($first = $column->shift())
                             <div class="block-m">
                                 <a href="{{url($first->slug.'.html')}}" class="thumb-img">
-                                    <img src="{{url('files/images/400_'.$first->image)}}" alt="">
+                                    <img src="{{url('render/?p=' . $first->image . '&w=314&h=209')}}" />
                                 </a>
                                 <h3>
                                     <a href="{{url($first->slug.'.html')}}" class="thumb">{{str_limit($first->title, 50)}}</a>
@@ -105,7 +108,7 @@
                         @foreach ($column as $post)
                             <div class="list-medicine">
                                 <a href="{{url($post->slug.'.html')}}" class="thumb">
-                                    <img src="{{url('files/images/100_'.$post->image)}}" width="115" height="80" alt="">
+                                    <img src="{{url('render/?p=' . $post->image . '&w=115&h=80')}}" />
                                 </a>
                                 <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
                                 <div class="view fl">
