@@ -107,7 +107,7 @@ class PostRepository extends BaseRepository
         $img->save(public_path() . '/files/images/' . $filename);
 
         if ($old) {
-            @unlink(public_path() . '/files/images/' . $filename);
+            @unlink(public_path() . '/files/images/' . $old);
         }
         return $filename;
     }
