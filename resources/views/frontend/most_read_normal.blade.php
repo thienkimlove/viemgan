@@ -9,7 +9,7 @@
                 @if ($post = $mostReads->shift())
                     <div class="block-m">
                         <a href="{{url($post->slug . '.html')}}" class="thumb-img">
-                            <img src="{{url('files/images/300_' . $post->image)}}" alt="">
+                            <img src="{{url('render/?p=' . $post->image . '&w=314&h=209')}}" />
                         </a>
 
                         <h3>
@@ -24,7 +24,7 @@
                 @foreach ($mostReads as $post)
                     <div class="list-medicine">
                         <a href="{{url($post->slug . '.html')}}" class="thumb">
-                            <img src="{{url('files/images/100_' . $post->image)}}" width="115" height="80" alt="">
+                            <img src="{{url('render/?p=' . $post->image . '&w=115&h=80')}}" />
                         </a>
 
                         <h3><a href="{{url($post->slug . '.html')}}">{{str_limit($post->title, 40)}}</a></h3>
