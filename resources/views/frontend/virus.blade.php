@@ -13,7 +13,7 @@
                     <div class="item">
                         <div class="block-m">
                             <a href="{{url($post->slug.'.html')}}" class="thumb-img">
-                                <img src="{{url('render/?p=' . $post->image . '&w=314&h=209')}}" />
+                                <img src="{{url('image-cached/size2/' .$post->image)}}" />
                             </a>
                             <h3>
                                 <a href="{{url($post->slug.'.html')}}" class="thumb">{{str_limit($post->title, 50)}}</a>

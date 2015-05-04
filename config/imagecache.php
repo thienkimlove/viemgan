@@ -16,7 +16,7 @@ return array(
     |
     */
    
-    'route' => null,
+    'route' => 'image-cached',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,8 +31,7 @@ return array(
     */
     
     'paths' => array(
-        public_path('upload'),
-        public_path('images')
+        public_path('files/images')
     ),
 
     /*
@@ -50,15 +49,24 @@ return array(
    
     'templates' => array(
 
-        'small' => function($image) { 
-            return $image->fit(120, 90);
+        'size1' => function($image) {
+            return $image->fit(115, 80);
         },
-        'medium' => function($image) {
-            return $image->fit(240, 180);
+        'size2' => function($image) {
+            return $image->fit(314, 209);
         },
-        'large' => function($image) {
-            return $image->fit(480, 360);
-        }
+        'size3' => function($image) {
+            return $image->fit(235, 156);
+        },
+        'size4' => function($image) {
+            return $image->fit(220, 130);
+        },
+        'size5' => function($image) {
+            return $image->fit(500, 330);
+        },
+        'size6' => function($image) {
+            return $image->fit(282, 167);
+        },
 
     ),
 

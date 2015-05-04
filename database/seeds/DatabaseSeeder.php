@@ -97,6 +97,7 @@ class PostTableSeeder extends Seeder {
         for ($i = 1; $i < 20; $i ++) {
             Question::create([
                 'question' => $lipsum->getContent(10, 'txt'),
+                'image' => $image,
                 'answer' => $lipsum->getContent(10, 'txt')
             ]);
         }

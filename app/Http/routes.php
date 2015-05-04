@@ -12,9 +12,9 @@
 */
 
 use App\Post;
-use Intervention\Image\Facades\Image;
 
 Route::get('/', 'MainController@index');
+Route::get('fix', 'MainController@fix');
 Route::get('/hoi-dap', 'MainController@faq');
 Route::get('/lien-he', 'MainController@contact');
 Route::get('admin', 'AdminController@index');
@@ -39,25 +39,6 @@ Route::get('search/{tag}', function($tag) {
             'meta_keywords' => $keyword,
         ]);
     }
-});
-
-//display images.
-
-Route::get('render', function () {
-
-    if (file_exists(public_path() . '/files/images/' . Request::input('p'))) {
-        $image = Image::make(public_path() . '/files/images/' . Request::input('p'));
-    } else {
-        $image = Image::make(public_path() . '/files/images/600_' . Request::input('p'));
-    }
-
-
-
-    if (Request::input('w') && Request::input('h')) {
-        $image->fit(Request::input('w'), Request::input('h'));
-    }
-
-    return $image->response();
 });
 
 

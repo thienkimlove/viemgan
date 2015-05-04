@@ -5,7 +5,7 @@
     @foreach ($bestRates  as $post)
         <article class="box-rate">
             <a href="{{url($post->slug . '.html')}}" class="thumb">
-                <img src="{{url('render/?p=' . $post->image . '&w=115&h=80')}}" />
+                <img src="{{url('image-cached/size1/' .$post->image)}}" />
             </a>
             <div class="intro-product">
                 <div class="title-p"><a href="{{url($post->slug . '.html')}}">{{str_limit($post->title, 40)}}</a></div>

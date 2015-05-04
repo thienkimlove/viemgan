@@ -3,7 +3,7 @@
 use App\Category;
 use App\Post;
 use App\Tag;
-use Intervention\Image\ImageManager;
+use Intervention\Image\Facades\Image;
 
 class PostRepository extends BaseRepository
 {
@@ -102,32 +102,12 @@ class PostRepository extends BaseRepository
     protected function saveImage($request, $old = null)
     {
         $filename = md5(time()) . '.' . $request->file('image')->getClientOriginalExtension();
-        $manager = new ImageManager(array('driver' => 'imagick'));
-        $img = $manager->make($request->file('image')->getRealPath());
+        $img = Image::make($request->file('image')->getRealPath());
         // resize the image to a width of 300 and constrain aspect ratio (auto height)
         $img->save(public_path() . '/files/images/' . $filename);
-        $img->resize(500, 330)->save(public_path() . '/files/images/600_' . $filename);
-        $img->resize(414, 275)->save(public_path() . '/files/images/500_' . $filename);
-        $img->resize(314, 209)->save(public_path() . '/files/images/400_' . $filename);
-        $img->resize(282, 167)->save(public_path() . '/files/images/300_' . $filename);
-        $img->resize(235, 156)->save(public_path() . '/files/images/200_' . $filename);
-        $img->resize(115, 80)->save(public_path() . '/files/images/100_' . $filename);
 
-
-          /*  ->resize(500, 330)->save(public_path() . '/files/images/600_' . $filename)
-            ->resize(414, 275)->save(public_path() . '/files/images/500_' . $filename)
-            ->resize(314, 209)->save(public_path() . '/files/images/400_' . $filename)
-            ->resize(282, 167)->save(public_path() . '/files/images/300_' . $filename)
-            ->resize(235, 156)->save(public_path() . '/files/images/200_' . $filename)
-            ->resize(115, 80)->save(public_path() . '/files/images/100_' . $filename);*/
         if ($old) {
             @unlink(public_path() . '/files/images/' . $filename);
-            @unlink(public_path() . '/files/images/100_' . $old);
-            @unlink(public_path() . '/files/images/200_' . $old);
-            @unlink(public_path() . '/files/images/300_' . $old);
-            @unlink(public_path() . '/files/images/400_' . $old);
-            @unlink(public_path() . '/files/images/500_' . $old);
-            @unlink(public_path() . '/files/images/600_' . $old);
         }
         return $filename;
     }

@@ -10,7 +10,7 @@
                 @foreach($mostReads as $i => $post)
                     <div class="list-medicine">
                         <a href="{{url($post->slug . '.html')}}" class="thumb">
-                            <img src="{{url('render/?p=' . $post->image . '&w=115&h=80')}}" />
+                            <img src="{{url('image-cached/size1/' .$post->image)}}" />
                         </a>
 
                         <h3><a href="{{url($post->slug . '.html')}}">{{str_limit($post->title, 40)}}</a></h3>

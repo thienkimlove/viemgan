@@ -53,6 +53,38 @@ class MainController extends Controller
         ]);
     }
 
+    public function fix()
+    {
+        $posts = Post::all();
+        foreach ($posts as $post) {
+            if (!file_exists(public_path('files/images/'. $post->image))) {
+                if (file_exists(public_path('files/images/600_'. $post->image))) {
+                    copy(public_path('files/images/600_'. $post->image), public_path('files/images/'. $post->image));
+                }
+            }
+            if (file_exists(public_path('files/images/600_'. $post->image))) {
+                unlink(public_path('files/images/600_'. $post->image));
+            }
+            if (file_exists(public_path('files/images/500_'. $post->image))) {
+                unlink(public_path('files/images/500_'. $post->image));
+            }
+            if (file_exists(public_path('files/images/400_'. $post->image))) {
+                unlink(public_path('files/images/400_'. $post->image));
+            }
+            if (file_exists(public_path('files/images/300_'. $post->image))) {
+                unlink(public_path('files/images/300_'. $post->image));
+            }
+            if (file_exists(public_path('files/images/200_'. $post->image))) {
+                unlink(public_path('files/images/200_'. $post->image));
+            }
+            if (file_exists(public_path('files/images/100_'. $post->image))) {
+                unlink(public_path('files/images/100_'. $post->image));
+            }
+        }
+
+        dd('Done');
+    }
+
     public function categoryDetails($slug)
     {
         $category = Category::where('slug', $slug)->first();
