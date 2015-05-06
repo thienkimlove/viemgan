@@ -6,7 +6,7 @@
                 <div class="area-social">
                     <ul class="social">
                         <li>
-                            <a href="#" class="i-facebook thumb-img"></a>
+                            <a href="https://www.facebook.com/viemgan.com.vn" class="i-facebook thumb-img"></a>
                         </li>
                         <li>
                             <a href="#" class="i-tw thumb-img"></a>
@@ -35,19 +35,18 @@
             <div class="item item-3">
                 <div class="head">LIÊN HỆ</div>
                 <ul class="nav-footer">
-                    <li>Địa chỉ: Số aa</li>
-                    <li> Điện thoại: </li>
+                    <li> Điện thoại: 0912571190</li>
                     <li>
-                        Email: <a href="mailto:info@gmail.com" title="info@gmail.com">info@gmail.com</a>
+                        Email: <a href="mailto:chiasehay@tuelinh.com" title="chiasehay@tuelinh.com">chiasehay@tuelinh.com</a>
                     </li>
                 </ul>
             </div>
             <div class="item item-4">
                 <div class="head">Đăng ký nhận tin</div>
-                <form action="" method="post">
-                    <input type="email" name="email" class="txt txt-email" placeholder="Email">
-                    <input type="submit" value="Gửi" class="btn btn-submit">
-                </form>
+                {!! Form::open(['method' => 'POST', 'route' => ['registerEmail'], 'name' => 'registerEmail']) !!}
+                    <input type="email" name="email" data-ng-model="email" class="txt txt-email" placeholder="Email">
+                    <input type="submit" value="Gửi" data-ng-click="registerEmailSubmit($event)" class="btn btn-submit">
+                {!! Form::close()  !!}
             </div>
             <div class="clear"></div>
         </div>

@@ -10,7 +10,7 @@
             <div class="area-social cf">
                 <ul class="social">
                     <li>
-                        <a href="#" class="i-facebook thumb-img"></a>
+                        <a href="https://www.facebook.com/viemgan.com.vn" class="i-facebook thumb-img"></a>
                     </li>
                     <li>
                         <a href="#" class="i-tw thumb-img"></a>

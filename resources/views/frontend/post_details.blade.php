@@ -5,7 +5,7 @@
 <div class="main-content">
     <div class="col-left">
         <div class="title">
-            <span>Sản phẩm</span>
+            <span>{{$post->category->name}}</span>
         </div>
         <article class="box-detail">
             <h1 class="head">{{$post->title}}</h1>

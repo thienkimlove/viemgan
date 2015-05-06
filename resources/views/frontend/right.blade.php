@@ -27,6 +27,9 @@
             </div>
         </div>
     @endif
+    <div class="right-in">
+        <div class="fb-page" data-href="https://www.facebook.com/viemgan.com.vn" data-width="300" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/viemgan.com.vn"><a href="https://www.facebook.com/viemgan.com.vn">PHÒNG BỆNH GAN</a></blockquote></div></div>
+    </div>
     @if (!empty($page) && $page == 'index')
         @include('frontend.most_question')
     @endif

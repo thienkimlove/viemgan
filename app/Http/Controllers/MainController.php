@@ -6,10 +6,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ContactRequest;
+use App\Http\Requests\RegisterEmailRequest;
 use App\Post;
 use App\Question;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -19,6 +21,10 @@ class MainController extends Controller
         $page = 'index';
 
         $latestPost = Post::where('status', true)->hot(true)->latest()->take(5)->get();
+        $idArrays = [];
+        foreach ($latestPost as $post) {
+            $idArrays[] = $post->id;
+        }
         $categories = Category::latest()->get();
 
         $rootBlock = [];
@@ -30,19 +36,32 @@ class MainController extends Controller
             if ($category->display_homepage_0) {
                 $rootBlock['category'] = $category;
                 $cateIds = Category::where('parent_id', $category->id)->lists('id');
-                $rootBlock['posts'] = Post::where('status', true)->hot(true)->whereIn('category_id', $cateIds)->latest()->take(5)->get();
+                $rootBlock['posts'] = Post::where('status', true)
+                    ->hot(true)
+                    ->whereIn('category_id', $cateIds)
+                    ->whereNotIn('id', $idArrays)
+                    ->latest()->take(5)->get();
             }
             if ($category->display_homepage_1) {
                 $top1Block['category'] = $category;
-                $top1Block['posts'] = Post::where('status', true)->hot(true)->where('category_id', $category->id)->latest()->take(6)->get();
+                $top1Block['posts'] = Post::where('status', true)
+                    ->hot(true)
+                    ->where('category_id', $category->id)
+                    ->whereNotIn('id', $idArrays)
+                    ->latest()
+                    ->take(6)
+                    ->get();
             }
-            /*if ($category->display_homepage_2) {
-                $top2Block['category'] = $category;
-                $top2Block['posts'] = Post::hot(true)->where('category_id', $category->id)->latest()->take(6)->get();
-            }*/
+
             if ($category->display_homepage_2) {
                 $top2Block['category'] = $category;
-                $top2Block['posts'] = Post::where('status', true)->hot(true)->where('category_id', $category->id)->latest()->take(6)->get();
+                $top2Block['posts'] = Post::where('status', true)
+                    ->hot(true)
+                    ->where('category_id', $category->id)
+                    ->whereNotIn('id', $idArrays)
+                    ->latest()
+                    ->take(6)
+                    ->get();
 
             }
         }
@@ -57,28 +76,28 @@ class MainController extends Controller
     {
         $posts = Post::all();
         foreach ($posts as $post) {
-            if (!file_exists(public_path('files/images/'. $post->image))) {
-                if (file_exists(public_path('files/images/600_'. $post->image))) {
-                    copy(public_path('files/images/600_'. $post->image), public_path('files/images/'. $post->image));
+            if (!file_exists(public_path('files/images/' . $post->image))) {
+                if (file_exists(public_path('files/images/600_' . $post->image))) {
+                    copy(public_path('files/images/600_' . $post->image), public_path('files/images/' . $post->image));
                 }
             }
-            if (file_exists(public_path('files/images/600_'. $post->image))) {
-                unlink(public_path('files/images/600_'. $post->image));
+            if (file_exists(public_path('files/images/600_' . $post->image))) {
+                unlink(public_path('files/images/600_' . $post->image));
             }
-            if (file_exists(public_path('files/images/500_'. $post->image))) {
-                unlink(public_path('files/images/500_'. $post->image));
+            if (file_exists(public_path('files/images/500_' . $post->image))) {
+                unlink(public_path('files/images/500_' . $post->image));
             }
-            if (file_exists(public_path('files/images/400_'. $post->image))) {
-                unlink(public_path('files/images/400_'. $post->image));
+            if (file_exists(public_path('files/images/400_' . $post->image))) {
+                unlink(public_path('files/images/400_' . $post->image));
             }
-            if (file_exists(public_path('files/images/300_'. $post->image))) {
-                unlink(public_path('files/images/300_'. $post->image));
+            if (file_exists(public_path('files/images/300_' . $post->image))) {
+                unlink(public_path('files/images/300_' . $post->image));
             }
-            if (file_exists(public_path('files/images/200_'. $post->image))) {
-                unlink(public_path('files/images/200_'. $post->image));
+            if (file_exists(public_path('files/images/200_' . $post->image))) {
+                unlink(public_path('files/images/200_' . $post->image));
             }
-            if (file_exists(public_path('files/images/100_'. $post->image))) {
-                unlink(public_path('files/images/100_'. $post->image));
+            if (file_exists(public_path('files/images/100_' . $post->image))) {
+                unlink(public_path('files/images/100_' . $post->image));
             }
         }
 
@@ -93,11 +112,18 @@ class MainController extends Controller
         //viemgan virus.
         if ($category->template == 1 | $category->template == 2) {
             $latestPost = Post::where('status', true)->where('category_id', $category->id)->latest()->take(5)->get();
-            $posts = Post::where('status', true)->where('category_id', $category->id)->latest()->skip(4)->paginate(10);
+            $idArrays = [];
+            foreach ($latestPost as $post) {
+                $idArrays[] = $post->id;
+            }
+            $posts = Post::where('status', true)
+                ->where('category_id', $category->id)
+                ->whereNotIn('id', $idArrays)->latest()
+                ->paginate(10);
             $view = 'frontend.virus';
-        }  else {
+        } else {
             //best_product.html
-            $posts = Post::where('status', true)->where('category_id', $category->id)->latest()->paginate(10);
+            $posts = Post::where('status', true)->where('category_id', $category->id)->orderBy('updated_at', 'desc')->paginate(10);
             $view = 'frontend.category_details';
         }
         return view($view, compact('category', 'posts', 'latestPost', 'page'))->with([
@@ -133,7 +159,7 @@ class MainController extends Controller
         $tag = Tag::where('slug', $keyword)->first();
         $posts = $tag->posts();
         return view('frontend.search', compact('posts', 'keyword'))->with([
-            'meta_title' => ' Các bài viết với nhãn '.$keyword.' tại Viemgan.com.vn ',
+            'meta_title' => ' Các bài viết với nhãn ' . $keyword . ' tại Viemgan.com.vn ',
             'meta_desc' => '',
             'meta_keywords' => $keyword,
         ]);
@@ -147,6 +173,18 @@ class MainController extends Controller
     public function saveContact(ContactRequest $request)
     {
         Contact::create($request->all());
+        return redirect('/');
+    }
+
+    public function registerEmail(RegisterEmailRequest $request)
+    {
+        Mail::send('emails.register', ['email' => $request->input('email')], function ($message) {
+            $message->from(env('EMAIL_FROM_EMAIL'), env('EMAIL_FROM_NAME'));
+
+            $message->to(env('EMAIL_TO_EMAIL'))
+                ->cc('thienkimlove@gmail.com')
+                ->subject('Email đăng ký nhận tin!');
+        });
         return redirect('/');
     }
 

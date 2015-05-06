@@ -4,6 +4,11 @@ var app = angular.module('Application', [], function ($interpolateProvider) {
 });
 
 app.controller('MainController', function($scope, $http){
+    $scope.email = null;
+    $scope.registerEmailSubmit = function(event){
+        event.preventDefault();
+        $('form[name=registerEmail]').submit();
+    }
 }).controller('HeaderController', function($scope, $window){
     $scope.keyword = '';
     $scope.search = function(){

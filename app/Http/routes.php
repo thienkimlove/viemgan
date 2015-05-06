@@ -49,6 +49,7 @@ Route::resource('admin/posts', 'PostsController');
 Route::resource('admin/questions', 'QuestionsController');
 Route::resource('admin/contacts', 'ContactsController');
 Route::post('saveContact', ['as' => 'saveContact', 'uses' => 'MainController@saveContact']);
+Route::post('registerEmail', ['as' => 'registerEmail', 'uses' => 'MainController@registerEmail']);
 Route::post('increaseLikes', ['as' => 'increaseLikes', 'uses' => 'MainController@increaseLikes']);
 
 Route::controllers([
