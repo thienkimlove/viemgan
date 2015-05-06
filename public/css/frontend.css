@@ -1558,13 +1558,13 @@ img {
   content: "";
   clear: left;
 }
-.box-faq .item > a {
-  float: left;
-  margin-right: 10px;
-}
 .box-faq .item .content {
   padding-left: 40px;
   margin-bottom: 10px;
+}
+.box-faq .item .content > a {
+  float: left;
+  margin-right: 10px;
 }
 .box-faq .item .human {
   font-weight: bold;
