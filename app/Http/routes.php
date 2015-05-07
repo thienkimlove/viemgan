@@ -24,17 +24,17 @@ Route::get('tu-khoa/{tag}', 'MainController@tag');
 /*
  * for searching
  */
-Route::get('search/{tag}', function($tag) {
+Route::get('search/{tag}', function ($tag) {
     if (preg_match('/tag-([a-z0-9\-]+)/', $tag, $matches)) {
         $keyword = $matches[1];
-        $keyword = str_replace('-',' ', $keyword);
+        $keyword = str_replace('-', ' ', $keyword);
         if (strlen($keyword) > 2) {
             $posts = Post::where('status', true)->tagged($keyword)->latest()->paginate(20);
         } else {
             $posts = Post::where('status', true)->latest()->paginate(20);
         }
         return view('frontend.search', compact('posts', 'keyword'))->with([
-            'meta_title' => ' Kết quả tìm kiếm từ khóa '.$keyword.' tại Viemgan.com.vn ',
+            'meta_title' => ' Kết quả tìm kiếm từ khóa ' . $keyword . ' tại Viemgan.com.vn ',
             'meta_desc' => '',
             'meta_keywords' => $keyword,
         ]);
@@ -53,19 +53,26 @@ Route::post('registerEmail', ['as' => 'registerEmail', 'uses' => 'MainController
 Route::post('increaseLikes', ['as' => 'increaseLikes', 'uses' => 'MainController@increaseLikes']);
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('/{value}', function($value){
+Route::get('/{value}', function ($value) {
     if (preg_match('/([a-z0-9\-]+)\.html/', $value, $matches)) {
         $origin = $post = Post::where('slug', $matches[1])->first();
         $origin->views = $origin->views + 1;
         $origin->save();
-        return view('frontend.post_details', compact('post'))->with([
-            'meta_title' => $post->title. ' | Viemgan.com.vn ',
+
+        $related = Post::where('status', true)
+            ->where('category_id', $post->category_id)
+            ->orderBy('updated_at', 'desc')
+            ->limit(3)
+            ->get();
+
+        return view('frontend.post_details', compact('post', 'related'))->with([
+            'meta_title' => $post->title . ' | Viemgan.com.vn ',
             'meta_desc' => $post->desc,
-            'meta_keywords' => ($post->tagList)? implode(',', $post->tagList) : 'viemgan, huongdan, bai viet',
+            'meta_keywords' => ($post->tagList) ? implode(',', $post->tagList) : 'viemgan, huongdan, bai viet',
         ]);
     }
 });

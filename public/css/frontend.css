@@ -1048,6 +1048,22 @@ img {
   padding-top: 5px;
   margin-bottom: 15px;
 }
+.main-content .col-left .box-releated {
+  margin-bottom: 20px;
+}
+.main-content .col-left .box-releated h3 {
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  margin: 0 10px 10px 0;
+}
+.main-content .col-left .box-releated .list {
+  list-style: none;
+}
+.main-content .col-left .box-releated .list > li {
+  margin: 5px 0;
+  background: url(../images/icon_other.jpg) left 5px no-repeat;
+  padding-left: 10px;
+}
 .main-content .col-right {
   width: 30%;
 }
@@ -1057,6 +1073,9 @@ img {
 .main-content .col-right .box-medicine .data .item {
   width: 94%;
   margin: 0px 3%;
+}
+.main-content .col-right .box-medicine .data .item .block-m {
+  min-height: 210px;
 }
 .main-content .col-right .box-ad {
   margin-right: 0;
@@ -1421,7 +1440,6 @@ img {
   margin-bottom: 30px;
 }
 .box-relate .head {
-  font: 800 14px "Open Sans";
   margin-bottom: 15px;
 }
 .box-relate .data {
@@ -1583,7 +1601,8 @@ img {
   font-weight: bold;
 }
 .box-faq .item .title-faq {
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: normal;
   margin: 5px 0;
 }
 .box-faq .item .title-faq a {

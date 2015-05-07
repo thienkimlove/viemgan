@@ -35,6 +35,14 @@
       @if ($post->tags->count() > 0)
       @include('frontend.post_tag', ['tags' => $post->tags])
       @endif
+        <div class="box-releated">
+            <h3>Tin liên quan</h3>
+            <ul class="list">
+                @foreach ($related as $post)
+                <li><a href="{{url($post->slug.'.html')}}">{{$post->title}}</a></li>
+                @endforeach
+            </ul>
+        </div>
         <div class="box-form">
             <div class="fb-comments" data-href="{{url($post->slug.'.html')}}" data-numposts="5" data-colorscheme="light"></div>
             <div class="clear"></div>
