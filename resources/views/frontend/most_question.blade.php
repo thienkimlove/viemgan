@@ -8,21 +8,11 @@
     <div class="box-medicine cf">
         <div class="data">
             <div class="item">
-                @if($question = $mostQuestions->shift())
                     <div class="block-m">
                         <a href="{{url('hoi-dap')}}" class="thumb-img">
-                            <img src="{{url('files/images/300_' . $question->image)}}" alt="">
+                            <img src="{{url('images/question.png')}}" alt="">
                         </a>
-
-                        <h3>
-                            <a href="{{url('hoi-dap')}}" class="thumb">{{str_limit($question->question, 40)}}</a>
-                        </h3>
-
-                        <p>
-                            {{str_limit($question->answer,70)}}
-                        </p>
                     </div>
-                @endif
                 @foreach ($mostQuestions as $question)
                     <div class="list-medicine">
                         <a href="{{url('hoi-dap')}}" class="thumb">

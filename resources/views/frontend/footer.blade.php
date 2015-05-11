@@ -36,9 +36,6 @@
                 <div class="head">LIÊN HỆ</div>
                 <ul class="nav-footer">
                     <li> Điện thoại: 0912571190</li>
-                    <li>
-                        Email: <a href="mailto:chiasehay@tuelinh.com" title="chiasehay@tuelinh.com">chiasehay@tuelinh.com</a>
-                    </li>
                 </ul>
             </div>
             <div class="item item-4">

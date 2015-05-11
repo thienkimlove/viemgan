@@ -19,7 +19,7 @@ class ViewComposerProvider extends ServiceProvider {
 
 
         view()->composer('frontend', function ($view) {
-             $view->with('categories', Category::where('parent_id', null)->get());
+             $view->with('categories', Category::where('parent_id', null)->orderBy('id', 'asc')->get());
 
         });
         view()->composer('frontend.most_read_special', function ($view) {
