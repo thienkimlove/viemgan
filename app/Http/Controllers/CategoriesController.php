@@ -43,12 +43,14 @@ class CategoriesController extends Controller
     }
     public function show($id, Request $request)
     {
+        $cateIds = Category::where('parent_id', $id)->lists('id');
+        $whereIn = ($cateIds) ? $cateIds : [$id];
         $category = Category::findOrFail($id);
         if ($request->input('q')) {
             $searchPost = urldecode($request->input('q'));
-            $posts = Post::where('title', 'LIKE', '%'.$searchPost.'%')->where('category_id', $category->id)->latest()->paginate(10);
+            $posts = Post::where('title', 'LIKE', '%'.$searchPost.'%')->whereIn('category_id', $whereIn)->latest()->paginate(10);
         } else {
-            $posts = Post::where('category_id', $category->id)->latest()->paginate(10);
+            $posts = Post::whereIn('category_id', $whereIn)->latest()->paginate(10);
             $searchPost = '';
         }
         return view('admin.category.show', compact('posts', 'searchPost', 'category'));
