@@ -8,7 +8,7 @@
             </li>
             @foreach ($categories as $cate)
             <li>
-                <a class="{{(!empty($page) && ($page == $cate->id | in_array($page, $cate->subCategories->lists('id')))) ? 'active' : ''}}" href="{{($cate->subCategories->count() == 0) ? url('chuyen-muc', $cate->slug) : ''}}" title=""><span>{{$cate->name}}</span></a>
+                <a class="{{(!empty($page) && ($page == $cate->id | in_array($page, $cate->subCategories->lists('id')))) ? 'active' : ''}}" href="{{url('chuyen-muc', $cate->slug)}}" title=""><span>{{$cate->name}}</span></a>
                 @if ($cate->subCategories->count() > 0)
                  <ul>
                     @foreach ($cate->subCategories as $sub)

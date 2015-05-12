@@ -15,7 +15,7 @@
                             @else
                                 <li class="{{(!empty($page) && ($page == $cate->id | in_array($page, $cate->subCategories->lists('id')))) ? 'active' : ''}}">
                             @endif
-                                <a  href="{{($cate->subCategories->count() == 0) ? url('chuyen-muc', $cate->slug) : ''}}" title=""><span>{{$cate->name}}</span></a>
+                                <a  href="{{url('chuyen-muc', $cate->slug)}}" title=""><span>{{$cate->name}}</span></a>
                                 @if ($cate->subCategories->count() > 0)
                                     <ul>
                                         @foreach ($cate->subCategories as $sub)

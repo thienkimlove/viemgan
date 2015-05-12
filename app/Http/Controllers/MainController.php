@@ -33,20 +33,24 @@ class MainController extends Controller
 
 
         foreach ($categories as $category) {
+            $cateIds = Category::where('parent_id', $category->id)->lists('id');
+            $whereIn = ($cateIds) ? $cateIds : [$category->id];
             if ($category->display_homepage_0) {
                 $rootBlock['category'] = $category;
-                $cateIds = Category::where('parent_id', $category->id)->lists('id');
                 $rootBlock['posts'] = Post::where('status', true)
                     ->hot(true)
-                    ->whereIn('category_id', $cateIds)
+                    ->whereIn('category_id', $whereIn)
                     ->whereNotIn('id', $idArrays)
-                    ->latest()->take(5)->get();
+                    ->latest()
+                    ->take(5)
+                    ->get();
+
             }
             if ($category->display_homepage_1) {
                 $top1Block['category'] = $category;
                 $top1Block['posts'] = Post::where('status', true)
                     ->hot(true)
-                    ->where('category_id', $category->id)
+                    ->whereIn('category_id', $whereIn)
                     ->whereNotIn('id', $idArrays)
                     ->latest()
                     ->take(9)
@@ -57,12 +61,11 @@ class MainController extends Controller
                 $top2Block['category'] = $category;
                 $top2Block['posts'] = Post::where('status', true)
                     ->hot(true)
-                    ->where('category_id', $category->id)
+                    ->whereIn('category_id', $whereIn)
                     ->whereNotIn('id', $idArrays)
                     ->latest()
                     ->take(6)
                     ->get();
-
             }
         }
         return view('frontend.index', compact('page', 'latestPost', 'rootBlock', 'top1Block', 'top2Block'))->with([
@@ -109,21 +112,23 @@ class MainController extends Controller
         $category = Category::where('slug', $slug)->first();
         $page = $category->id;
         $latestPost = null;
+        $cateIds = Category::where('parent_id', $category->id)->lists('id');
+        $whereIn = ($cateIds) ? $cateIds : [$category->id];
         //viemgan virus.
         if ($category->template == 1 | $category->template == 2) {
-            $latestPost = Post::where('status', true)->where('category_id', $category->id)->latest()->take(5)->get();
+            $latestPost = Post::where('status', true)->whereIn('category_id', $whereIn)->latest()->take(5)->get();
             $idArrays = [];
             foreach ($latestPost as $post) {
                 $idArrays[] = $post->id;
             }
             $posts = Post::where('status', true)
-                ->where('category_id', $category->id)
+                ->whereIn('category_id', $whereIn)
                 ->whereNotIn('id', $idArrays)->latest()
                 ->paginate(10);
             $view = 'frontend.virus';
         } else {
             //best_product.html
-            $posts = Post::where('status', true)->where('category_id', $category->id)->orderBy('updated_at', 'desc')->paginate(10);
+            $posts = Post::where('status', true)->whereIn('category_id', $whereIn)->orderBy('updated_at', 'desc')->paginate(10);
             $view = 'frontend.category_details';
         }
         return view($view, compact('category', 'posts', 'latestPost', 'page'))->with([

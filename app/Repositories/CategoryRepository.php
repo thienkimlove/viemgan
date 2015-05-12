@@ -63,7 +63,7 @@ class CategoryRepository extends BaseRepository
     {
         $category = $this->getById($id);
         //we do not allow category which have child have posts.
-        if ($request['parent_id'] != 0 && $request['parent_id'] != $category->parent_id) {
+        if ($request['parent_id'] != 0) {
             Post::where('category_id', $request['parent_id'])->update(['category_id' => $category->id]);
         }
         $category->update([
