@@ -19,7 +19,7 @@
                             <img src="{{url('files/images/100_' . $question->image)}}" width="115" height="80" alt="">
                         </a>
 
-                        <h3><a href="{{url('hoi-dap')}}">{{str_limit($question->answer, 40)}}</a></h3>
+                        <h3><a href="{{url('hoi-dap')}}">{{str_limit($question->question, 40)}}</a></h3>
                     </div>
                 @endforeach
             </div>
