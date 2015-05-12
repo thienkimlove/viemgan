@@ -18,7 +18,8 @@ class CategoryRepository extends BaseRepository
     public function create()
     {
         $parents = $this->model->where('parent_id', null)->lists('name', 'id');
-        $parents = array_merge([0 => 'Choose category'], $parents);
+        $parents[0] =  'Choose category';
+        ksort($parents);
         $layout = [1 => 'Layout Viêm gan Virus', 2 => 'Layout Dược liệu && Chia sẻ', 3 => 'Layout  Sản phẩm tốt cho gan'];
         return compact('parents', 'layout');
     }
@@ -50,7 +51,8 @@ class CategoryRepository extends BaseRepository
     {
         $category = $this->getById($id);
         $parents = $this->model->where('id', '<>', $id)->where('parent_id', null)->lists('name', 'id');
-        $parents = array_merge([0 => 'Choose category'], $parents);
+        $parents[0] =  'Choose category';
+        ksort($parents);
         $layout = [1 => 'Layout Viêm gan Virus', 2 => 'Layout Dược liệu && Chia sẻ', 3 => 'Layout Sản phẩm tốt cho gan'];
         return compact('category', 'parents', 'layout');
     }

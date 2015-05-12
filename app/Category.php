@@ -14,6 +14,8 @@ class Category extends Model implements SluggableInterface {
     protected $sluggable = array(
         'build_from' => 'name',
         'save_to'    => 'slug',
+        'unique'          => true,
+        'on_update'       => true,
     );
 
 	protected $fillable = [
