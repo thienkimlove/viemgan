@@ -8,11 +8,11 @@
                 <div class="col-left">
                     <h1 class="head">Viêm Gan</h1>
                     <ul>
-                        <li><span class="icon-1"></span>Địa chỉ: Số xxx</li>
-                        <li><span class="icon-2"></span>Điện thoại: xxx</li>
+                        <li><span class="icon-1"></span>Điện thoại: 0912571190</li>
+                        <li><span class="icon-2"></span>Fax: 04.62824263</li>
                         <li><span class="icon-3"></span>Fax: 0xxx</li>
-                        <li><span class="icon-4"></span>Email: <a href="mailto:info@gmail.com" title="info@gmail.com">info@gmail.com</a> </li>
-                        <li><span class="icon-5"></span>Website: <a href="" title="" target="_blank">http://xxx.xxx</a> </li>
+                        <li><span class="icon-4"></span>Website: <a href="http://viemgan.com.vn" target="_blank">viemgan.com.vn</a></li>
+                        <li><span class="icon-5"></span>Email: <a href="mailto:tuvan@giaidocgan.vn">tuvan@giaidocgan.vn</a></li>
                     </ul>
                 </div>
                 <div class="col-right">
