@@ -10,7 +10,6 @@
                     <ul>
                         <li><span class="icon-1"></span>Điện thoại: 0912571190</li>
                         <li><span class="icon-2"></span>Fax: 04.62824263</li>
-                        <li><span class="icon-3"></span>Fax: 0xxx</li>
                         <li><span class="icon-4"></span>Website: <a href="http://viemgan.com.vn" target="_blank">viemgan.com.vn</a></li>
                         <li><span class="icon-5"></span>Email: <a href="mailto:tuvan@giaidocgan.vn">tuvan@giaidocgan.vn</a></li>
                     </ul>
