@@ -75,6 +75,30 @@ class MainController extends Controller
         ]);
     }
 
+    public function landing()
+    {
+        return view('landing');
+    }
+
+    public function sendmail(Request $request){
+
+        $data = $request->all();
+
+        $contentMail = "<p>Câu hỏi từ: " . $data['fullname'] . "</p>";
+        $contentMail .= "<p>Địa chỉ: " . $data['address'] . "</p>";
+        $contentMail .= "<p>Điện thoại: " . $data['phone'] . "</p>";
+        $contentMail .= "<p>Email: " . $data['email'] . "</p>";
+        $contentMail .= "<p>Nội dung: " . $data['content'] . "</p>";
+        $headers = 'From: ' . $data['fullname'] . ' <' . $data['email'] . '>' . "\r\n";
+        $headers.= "MIME-Version: 1.0\n";
+        $headers.= "Content-Type: text/html; charset=\"iso-8859-1\"\n";
+        $headers.= "Content-Transfer-Encoding: 7bit\n";
+        $mailTo = "tuvan@giaidocgan.vn";
+        $title = "Câu hỏi tư vấn";
+        @mail($mailTo, $title, $contentMail, $headers);
+       return redirect('landingpage.html');
+    }
+
     public function fix()
     {
         $posts = Post::all();
