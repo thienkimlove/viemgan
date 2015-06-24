@@ -337,7 +337,7 @@
                 <input name=email class=textbox placeholder="Email">
             </div>
             <div class="pull-left f_right">
-                <textarea nam=content class=textarea placeholder="Nhập nội dung câu hỏi"></textarea>
+                <textarea name=content class=textarea placeholder="Nhập nội dung câu hỏi"></textarea>
                 <input value="" type=submit class=landing_form_btn>
             </div>
         {!! Form::close() !!}
