@@ -3,7 +3,6 @@
 use App\Category;
 use App\Contact;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\RegisterEmailRequest;
@@ -81,21 +80,13 @@ class MainController extends Controller
     }
 
     public function sendmail(Request $request){
+        Mail::send('emails.landing', ['data' => $request->all()], function ($message) {
+            $message->from(env('EMAIL_FROM_EMAIL'), env('EMAIL_FROM_NAME'));
 
-        $data = $request->all();
-
-        $contentMail = "<p>Câu hỏi từ: " . $data['fullname'] . "</p>";
-        $contentMail .= "<p>Địa chỉ: " . $data['address'] . "</p>";
-        $contentMail .= "<p>Điện thoại: " . $data['phone'] . "</p>";
-        $contentMail .= "<p>Email: " . $data['email'] . "</p>";
-        $contentMail .= "<p>Nội dung: " . $data['content'] . "</p>";
-        $headers = 'From: ' . $data['fullname'] . ' <' . $data['email'] . '>' . "\r\n";
-        $headers.= "MIME-Version: 1.0\n";
-        $headers.= "Content-Type: text/html; charset=\"iso-8859-1\"\n";
-        $headers.= "Content-Transfer-Encoding: 7bit\n";
-        $mailTo = "tuvan@giaidocgan.vn";
-        $title = "Câu hỏi tư vấn";
-        @mail($mailTo, $title, $contentMail, $headers);
+            $message->to('duoctuelinh@gmail.com')
+                ->cc('thienkimlove@gmail.com')
+                ->subject('Câu hỏi tư vấn');
+        });
        return redirect('landingpage.html');
     }
 
