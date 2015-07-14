@@ -36,15 +36,17 @@
             </h3>
             <div class="list-product">
                 @foreach ($top1Block['posts']->chunk(3) as $groupPost)
-                    @foreach ($groupPost as $post)
-                    <article class="item">
-                        <a href="{{url($post->slug.'.html')}}" class="thumb-img">
-                            <img src="{{url('image-cached/size3/' .$post->image)}}" />
-                        </a>
+                    <div class="row">
+                        @foreach ($groupPost as $post)
+                        <article class="item">
+                            <a href="{{url($post->slug.'.html')}}" class="thumb-img">
+                                <img src="{{url('image-cached/size3/' .$post->image)}}" />
+                            </a>
 
-                        <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
-                    </article>
-                    @endforeach
+                            <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
+                        </article>
+                        @endforeach
+                    </div>
                 @endforeach
             </div>
         </div>
