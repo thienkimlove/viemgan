@@ -36,7 +36,7 @@
             </h3>
             <div class="list-product">
                 @foreach ($top1Block['posts']->chunk(3) as $groupPost)
-                    <div class="row">
+                    <div class="row cf">
                         @foreach ($groupPost as $post)
                         <article class="item">
                             <a href="{{url($post->slug.'.html')}}" class="thumb-img">
