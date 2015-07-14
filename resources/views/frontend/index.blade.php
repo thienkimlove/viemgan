@@ -35,14 +35,16 @@
                 <a href="{{url('chuyen-muc', $top1Block['category']->slug)}}"><span>{{$top1Block['category']->name}}</span></a>
             </h3>
             <div class="list-product">
-                @foreach ($top1Block['posts'] as $post)
-                <article class="item">
-                    <a href="{{url($post->slug.'.html')}}" class="thumb-img">
-                        <img src="{{url('image-cached/size3/' .$post->image)}}" />
-                    </a>
+                @foreach ($top1Block['posts']->chunk(3) as $groupPost)
+                    @foreach ($groupPost as $post)
+                    <article class="item">
+                        <a href="{{url($post->slug.'.html')}}" class="thumb-img">
+                            <img src="{{url('image-cached/size3/' .$post->image)}}" />
+                        </a>
 
-                    <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
-                </article>
+                        <h3><a href="{{url($post->slug.'.html')}}">{{str_limit($post->title, 50)}}</a></h3>
+                    </article>
+                    @endforeach
                 @endforeach
             </div>
         </div>
