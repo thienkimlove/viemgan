@@ -19,6 +19,40 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="description" content="{{!empty($meta_desc)? $meta_desc : 'Website về sản phẩm và bài viết liên quan tới bệnh gan'}}" />
     <meta name="keyword" content="{{!empty($meta_keywords)? $meta_keywords : 'viêm gan, virus, bài viết, hướng dẫn'}}" />
+    <script>(function() {
+            var _fbq = window._fbq || (window._fbq = []);
+            if (!_fbq.loaded) {
+                var fbds = document.createElement('script');
+                fbds.async = true;
+                fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fbds, s);
+                _fbq.loaded = true;
+            }
+            _fbq.push(['addPixelId', '1607876032783308']);
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', 'PixelInitialized', {}]);
+    </script>
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1607876032783308&amp;ev=PixelInitialized" /></noscript>
+
+
+    <!-- Facebook Conversion Code -->
+    <script>(function() {
+            var _fbq = window._fbq || (window._fbq = []);
+            if (!_fbq.loaded) {
+                var fbds = document.createElement('script');
+                fbds.async = true;
+                fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fbds, s);
+                _fbq.loaded = true;
+            }
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', '6030780499151', {'value':'0.00','currency':'VND'}]);
+    </script>
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6030780499151&amp;cd[value]=0.00&amp;cd[currency]=VND&amp;noscript=1" /></noscript>
 </head>
 <body class="home" data-ng-controller="MainController">
 <div id="fb-root"></div>
