@@ -23,6 +23,7 @@
             </div>
             {!!$post->content!!}
         </article><!--//box-detail-->
+        @include('frontend.banner', ['bannerPosition' => 4])
         <div class="box-share">
             <div class="item">
                 <div class="fb-like" data-href="{{url($post->slug.'.html')}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>

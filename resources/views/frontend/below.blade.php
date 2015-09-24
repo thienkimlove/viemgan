@@ -1,4 +1,3 @@
-@include('frontend.banner', ['bannerPosition' => 4])
 <div class="box-medicine cf">
     @foreach ($staticSub as $cate)
     <div class="data">
