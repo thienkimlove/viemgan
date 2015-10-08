@@ -5,9 +5,9 @@
     <div class="main-content">
         <div class="col-left">
             <div class="box-medicine cf">
-                <h3 class="title">
+                <h1 class="title">
                     <a href="{{url('chuyen-muc', $category->slug)}}"><span>{{$category->name}}</span></a>
-                </h3>
+                </h1>
                 @foreach ($posts as $post)
                 <div class="data">
                     <div class="item">
